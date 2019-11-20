@@ -1,11 +1,3 @@
 # LeagueOfData
 
-
-     _                                    ____   __   _____        _        
-    | |                                  / __ \ / _| |  __ \      | |       
-    | |     ___  __ _  __ _ _   _  ___  | |  | | |_  | |  | | __ _| |_ __ _ 
-    | |    / _ \/ _` |/ _` | | | |/ _ \ | |  | |  _| | |  | |/ _` | __/ _` |
-    | |___|  __/ (_| | (_| | |_| |  __/ | |__| | |   | |__| | (_| | || (_| |
-    |______\___|\__,_|\__, |\__,_|\___|  \____/|_|   |_____/ \__,_|\__\__,_|
-                       __/ |                                                
-                      |___/                                                 
+League of Data is an application that analyzes data from top-players' matches to calculate things such as ideal team compositions.
