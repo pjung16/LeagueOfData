@@ -6,37 +6,44 @@ API_KEY = ''
 with open('API_KEY.txt', 'r') as key:
     API_KEY = key.read().replace('\n', '')
 API_KEY_PARAM = {'api_key': API_KEY}
-player_ids = []
-encrypted_ids = []
+WAIT_TIME = 1.2
+
+summoner_ids = []
 account_ids = []
+all_matches = []
 
 def findPlayers():
     CHALLENGER_PLAYERS = 'https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5'
-    PLAYERS_API = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/{{0}}'
+    PLAYERS_API = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/{0}'
 
-    players = request.get(url=CHALLENGER_PLAYERS, params=API_KEY).json()['entries']
-    
+    players = requests.get(url=CHALLENGER_PLAYERS, params=API_KEY_PARAM).json()['entries']
+
     for player in players:
-        player_ids.append(player['summonerId'])
-        time.sleep(1.2)
-        with urllib.request.urlopen(PLAYERS_API.format(player['summonerId'])) as url:
-            encrypted_ids.append(json.loads(url.read().decode()))
-        
-        encrypted_ids.append(request.get(url=PLAYERS_API.format(player['summonerId']), params=API_KEY_PARAM).json())
-        account_ids.append(request.get(url=PLAYERS_API.format(player['summonerId']), params=API_KEY_PARAM).json()['accountId'])
+        summoner_ids.append(player['summonerId'])
+        account_ids.append(requests.get(url=PLAYERS_API.format(player['summonerId']), params=API_KEY_PARAM).json()['accountId'])
+        time.sleep(WAIT_TIME)
 
-    return (player_ids, encrypted_ids, account_ids)
+    return account_ids
 
-def findPlayerMatches():
+def findPlayerMatches(account_id):
     PLAYER_MATCHES_API = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{0}}?api_key={0}'.format(API_KEY)
-    with urllib.request.urlopen(PLAYER_MATCHES_API.format(account_ids[0])) as url:
-        matches = json.loads(url.read().decode())
+    matches = []
+    matches_data = requests.get(url=PLAYER_MATCHES_API.format(account_id), params=API_KEY_PARAM).json()['matches']
+    for m in matches_data:
+        matches.append(m['gameId'])
     
     return matches
 
+def findAllMatches():
+    for ai in account_ids:
+        player_matches = findPlayerMatches(ai)
+        all_matches.extend(player_matches)
+        time.sleep(WAIT_TIME)
+    
+    return all_matches
+
 def main():
     findPlayers()
-    findMatches()
 
 if __name__ == '__main__':
     main()

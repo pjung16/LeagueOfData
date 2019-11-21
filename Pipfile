@@ -10,6 +10,7 @@ pylint = "*"
 jupyter = "*"
 flask = "*"
 pymysql = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
