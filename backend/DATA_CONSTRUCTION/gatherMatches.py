@@ -26,7 +26,7 @@ def findPlayers():
     return account_ids
 
 def findPlayerMatches(account_id):
-    PLAYER_MATCHES_API = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{{0}}?api_key={0}'.format(API_KEY)
+    PLAYER_MATCHES_API = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{0}'
     matches = []
     matches_data = requests.get(url=PLAYER_MATCHES_API.format(account_id), params=API_KEY_PARAM).json()['matches']
     for m in matches_data:
