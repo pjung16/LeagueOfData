@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ChampionTable from './components/ChampionIcon.js'
+import ChampionTable from './components/ChampionTable.js'
 
 function App() {
   return (    
