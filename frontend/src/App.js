@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ChampionIcon from './components/ChampionIcon.js'
+import ChampionTable from './components/ChampionIcon.js'
 
 function App() {
   return (    
     <div className="App">
-      <ChampionIcon />
+      <ChampionTable />
     </div>
   );
 }
