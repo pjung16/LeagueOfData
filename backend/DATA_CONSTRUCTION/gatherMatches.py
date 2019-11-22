@@ -1,6 +1,5 @@
-import requests
-import json
 import time
+import requests
 import pymysql.cursors
 
 API_KEY = ''
@@ -14,11 +13,11 @@ account_ids = []
 all_matches = []
 
 connection = pymysql.connect(host='127.0.0.1',
-                            port=3306,
-                            user='root',
-                            db='LeagueOfData',
-                            charset='utf8mb4',
-                            cursorclass=pymysql.cursors.DictCursor)
+                             port=3306,
+                             user='root',
+                             db='LeagueOfData',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
 
 def findPlayers():
     global summoner_ids
@@ -29,8 +28,9 @@ def findPlayers():
     players = requests.get(url=CHALLENGER_PLAYERS, params=API_KEY_PARAM).json()['entries']
     for index, player in enumerate(players):
         summoner_ids.append(player['summonerId'])
-        account_ids.append(requests.get(url=PLAYERS_API.format(player['summonerId']), params=API_KEY_PARAM).json()['accountId'])
-        print("Finding IDs for player:", index, "/", len(players)) # track progress
+        account_ids.append(requests.get(url=PLAYERS_API.format(player['summonerId']),
+                                        params=API_KEY_PARAM).json()['accountId'])
+        print("Finding IDs for player:", index+1, "/", len(players)) # track progress
         time.sleep(WAIT_TIME)
 
     return account_ids
@@ -38,10 +38,11 @@ def findPlayers():
 def findPlayerMatches(account_id):
     PLAYER_MATCHES_API = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/{0}'
     matches = []
-    matches_data = requests.get(url=PLAYER_MATCHES_API.format(account_id), params=API_KEY_PARAM).json()['matches']
+    matches_data = requests.get(url=PLAYER_MATCHES_API.format(account_id),
+                                params=API_KEY_PARAM).json()['matches']
     for m in matches_data:
         matches.append(m['gameId'])
-    
+
     return matches
 
 def findAllMatches():
@@ -49,13 +50,14 @@ def findAllMatches():
     for index, ai in enumerate(account_ids):
         player_matches = findPlayerMatches(ai)
         all_matches.extend(player_matches)
-        print("Finding all match data for player:", index , "/", len(account_ids)) # track progress
+        print("Finding all match data for player:", index+1, "/", len(account_ids)) # track progress
         time.sleep(WAIT_TIME)
 
     all_matches = list(set(all_matches))
     return all_matches
 
 def insertMatchData(game_id):
+    global connection
     cursor = connection.cursor()
     query = 'INSERT INTO Games VALUES (%s);'
     cursor.execute(query, (game_id))
