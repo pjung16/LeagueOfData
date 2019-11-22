@@ -21,19 +21,16 @@ connection = pymysql.connect(host='127.0.0.1',
                             cursorclass=pymysql.cursors.DictCursor)
 
 def findPlayers():
-    CHALLENGER_PLAYERS = 'https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5'
-    PLAYERS_API = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/{0}'
     global summoner_ids
     global account_ids
+    CHALLENGER_PLAYERS = 'https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5'
+    PLAYERS_API = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/{0}'
 
     players = requests.get(url=CHALLENGER_PLAYERS, params=API_KEY_PARAM).json()['entries']
-
-    counter = 0
-    for player in players:
-        counter += 1
+    for index, player in enumerate(players):
         summoner_ids.append(player['summonerId'])
         account_ids.append(requests.get(url=PLAYERS_API.format(player['summonerId']), params=API_KEY_PARAM).json()['accountId'])
-        print(counter , "/", len(players))
+        print("Finding IDs for player:", index, "/", len(players)) # track progress
         time.sleep(WAIT_TIME)
 
     return account_ids
@@ -49,14 +46,13 @@ def findPlayerMatches(account_id):
 
 def findAllMatches():
     global all_matches
-    counter = 0
-    for ai in account_ids:
+    for index, ai in enumerate(account_ids):
         player_matches = findPlayerMatches(ai)
         all_matches.extend(player_matches)
-        print(counter , "/", len(account_ids))
+        print("Finding all match data for player:", index , "/", len(account_ids)) # track progress
         time.sleep(WAIT_TIME)
 
-    all_matches = set(all_matches)
+    all_matches = list(set(all_matches))
     return all_matches
 
 def insertMatchData(game_id):
