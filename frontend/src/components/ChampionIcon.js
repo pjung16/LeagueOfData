@@ -4,7 +4,7 @@ class ChampionIcon extends Component {
   render() {
     const { championName, hyperLink, imageLink } = this.props;
     return (
-      <div className="col">
+      <div className="col-2">
         <div className="champion-icon">
           <a href={ hyperLink }>
             <img alt={ championName } src={ imageLink } />

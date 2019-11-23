@@ -37,6 +37,26 @@ class ChampionTable extends Component {
           hyperLink: 'urgot',
           imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
         },
+        {
+          championName: 'Urgot',
+          hyperLink: 'urgot',
+          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
+        },
+        {
+          championName: 'Urgot',
+          hyperLink: 'urgot',
+          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
+        },
+        {
+          championName: 'Urgot',
+          hyperLink: 'urgot',
+          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
+        },
+        {
+          championName: 'Urgot',
+          hyperLink: 'urgot',
+          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
+        },
       ]
     };
   }
@@ -45,7 +65,7 @@ class ChampionTable extends Component {
     const { champions } = this.state;
     return (
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-start">
           {champions.map((champion) => {
             const { championName, hyperLink, imageLink } = champion;
             return(
