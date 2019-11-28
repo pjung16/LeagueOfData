@@ -1,6 +1,7 @@
 import pymysql.cursors
 import json
 import itertools
+import sys
 
 def getChampionIdDict():
     champions = {}
@@ -94,6 +95,9 @@ def findBestPairs(champId, championIds, championIdsSorted, connection):
 
 def HARD_RESET(championIdsSorted):
     try:
+        cancel = input('Running this function will reset the database. Enter \'y\' to continue. Any other input will cancel the reset: ')
+        if cancel != 'y':
+            raise Exception('Hard reset has been cancelled')
         cursor = connection.cursor()
         query = 'DELETE FROM ChampionData'
         cursor.execute(query)
