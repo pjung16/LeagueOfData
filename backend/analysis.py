@@ -21,32 +21,26 @@ def getChampionIdDict():
     return champions
 
 def goThroughTeams(championIds):
-    goThroughTeam1(championIds)
-    # goThroughTeam2(championIds)
-
-
-def goThroughTeam1(championIds):
     cursor = connection.cursor()
-    # for champId in championIds:
-    for champId in [1]:
+    for champId in championIds:
+        print(champId, end='\r')
         for team in [1, 2]:
-            query = 'SELECT winningTeamId, champId{0}, champId{1}, champId{2}, champId{3}, champId{4} FROM GameData WHERE checked = 0 AND (champId{0} = "%s" OR champId{1}  = "%s" OR champId{2} = "%s" OR champId{3} = "%s" OR champId{4} = "%s");'.format(5 * (team - 1) + 1, 5 * (team - 1) + 2, 5 * (team - 1) + 3, 5 * (team - 1) + 4, 5 * (team - 1) + 5)
+            query = 'SELECT gameId, winningTeamId, champId{0}, champId{1}, champId{2}, champId{3}, champId{4} FROM GameData WHERE checked = 0 AND (champId{0} = "%s" OR champId{1}  = "%s" OR champId{2} = "%s" OR champId{3} = "%s" OR champId{4} = "%s");'.format(5 * (team - 1) + 1, 5 * (team - 1) + 2, 5 * (team - 1) + 3, 5 * (team - 1) + 4, 5 * (team - 1) + 5)
             cursor.execute(query, (champId, champId, champId, champId, champId))
             response = cursor.fetchall()
             wins = 0
             losses = 0
             for game in response:
-                print(game)
-                if game[0] == team * 100:
-                    for teammateChamp in game[1:]:
-                        print(teammateChamp)
+                if game[1] == str(team * 100):
+                    for teammateChamp in game[2:]:
                         updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
                         cursor.execute(updateQuery)
                 else:
-                    for teammateChamp in game[1:]:
-                        print(teammateChamp)
+                    for teammateChamp in game[2:]:
                         updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
                         cursor.execute(updateQuery)
+                updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
+                cursor.execute(updateQuery, game[0])
 
 if __name__ == '__main__':
     championIds = getChampionIdDict()
@@ -54,8 +48,10 @@ if __name__ == '__main__':
     for x in championIds.keys():
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
-    
-    goThroughTeams(championIdsSorted)
-    
-    connection.commit()
+    try:
+        goThroughTeams(championIdsSorted)
+        
+        connection.commit()
+    except:
+        connection.rollback()
     connection.close()
