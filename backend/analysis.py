@@ -11,7 +11,7 @@ def getChampionIdDict():
             champions[champ['key']] = champ['name']
     return champions
 
-def goThroughTeams(connection):
+def goThroughMatches(connection):
     try:
         cursor = connection.cursor()
         query = 'SELECT * FROM GameData WHERE checked = 0;'
@@ -132,7 +132,7 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    goThroughTeams(connection)
+    goThroughMatches(connection)
 
     findBestPairs('69', championIds, championIdsSorted, connection)
     
