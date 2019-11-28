@@ -128,9 +128,9 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    HARD_RESET(championIdsSorted)
+    # HARD_RESET(championIdsSorted)
 
-    # goThroughTeams(connection)
+    goThroughTeams(connection)
 
     # findBestPairs('421', championIds, championIdsSorted, connection)
     
