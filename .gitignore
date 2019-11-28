@@ -2,3 +2,4 @@
 ./frontend/node_modules/
 backend/DATA_CONSTRUCTION/API_KEY.txt
 backend/DATA_CONSTRUCTION/DB_INFO.txt
+.vscode/*
