@@ -18,40 +18,26 @@ def goThroughTeams(connection):
         response = cursor.fetchall()
         count = 0
         for game in response:
-            gameId = game[0]
-            winner = game[1]
-            team1 = game[2:7]
-            team2 = game[7:12]
-            if winner == '100':
-                winningTeam = team1
-                losingTeam = team2
-            else:
-                winningTeam = team2
-                losingTeam = team1
-            for base in winningTeam:
-                for teammate in winningTeam:
-                    updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = %s;'.format(teammate)
-                    try:
-                        cursor.execute(updateQuery, (base))
-                    except Exception as e:
-                        connection.rollback()
-                        print('Updating pairs has failed:')
-                        print(e)
-                        sys.exit(2)
-                    connection.commit()
-            for base in losingTeam:
-                for teammate in losingTeam:
-                    updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = %s;'.format(teammate)
-                    try:
-                        cursor.execute(updateQuery, (base))
-                    except Exception as e:
-                        connection.rollback()
-                        print('Updating pairs has failed:')
-                        print(e)
-                        sys.exit(2)
-                    connection.commit()
-            updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
             try:
+                gameId = game[0]
+                winner = game[1]
+                team1 = game[2:7]
+                team2 = game[7:12]
+                if winner == '100':
+                    winningTeam = team1
+                    losingTeam = team2
+                else:
+                    winningTeam = team2
+                    losingTeam = team1
+                for base in winningTeam:
+                    for teammate in winningTeam:
+                        updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = %s;'.format(teammate)
+                        cursor.execute(updateQuery, (base))
+                for base in losingTeam:
+                    for teammate in losingTeam:
+                        updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = %s;'.format(teammate)
+                        cursor.execute(updateQuery, (base))
+                updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
                 cursor.execute(updateQuery, gameId)
             except Exception as e:
                 connection.rollback()
@@ -142,9 +128,9 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    # HARD_RESET(championIdsSorted)
+    HARD_RESET(championIdsSorted)
 
-    goThroughTeams(connection)
+    # goThroughTeams(connection)
 
     # findBestPairs('421', championIds, championIdsSorted, connection)
     
