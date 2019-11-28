@@ -110,7 +110,7 @@ def findGameData():
 def insertGameData(data):
     global connection
     cursor = connection.cursor()
-    query = 'INSERT INTO GameData VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
+    query = 'INSERT INTO GameData VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);'
     winning_team_id = 0
     if (data['teams'][0]['win'] == 'Win'):
         winning_team_id = 100
@@ -128,7 +128,8 @@ def insertGameData(data):
                             data['participants'][6]['championId'],
                             data['participants'][7]['championId'],
                             data['participants'][8]['championId'],
-                            data['participants'][9]['championId']))
+                            data['participants'][9]['championId'],
+                            '0'))
         connection.commit()
     except Exception as e:
         print("Insertion Error:", e)
