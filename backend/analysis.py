@@ -1,5 +1,6 @@
 import pymysql.cursors
 import json
+import itertools
 
 def getChampionIdDict():
     champions = {}
@@ -9,27 +10,83 @@ def getChampionIdDict():
             champions[champ['key']] = champ['name']
     return champions
 
-def goThroughTeams(championIds, connection):
-    cursor = connection.cursor()
-    for champId in championIds:
-        print(champId, end='\r')
-        for team in [1, 2]:
-            query = 'SELECT gameId, winningTeamId, champId{0}, champId{1}, champId{2}, champId{3}, champId{4} FROM GameData WHERE checked = 0 AND (champId{0} = "%s" OR champId{1}  = "%s" OR champId{2} = "%s" OR champId{3} = "%s" OR champId{4} = "%s");'.format(5 * (team - 1) + 1, 5 * (team - 1) + 2, 5 * (team - 1) + 3, 5 * (team - 1) + 4, 5 * (team - 1) + 5)
-            cursor.execute(query, (champId, champId, champId, champId, champId))
-            response = cursor.fetchall()
-            wins = 0
-            losses = 0
-            for game in response:
-                if game[1] == str(team * 100):
-                    for teammateChamp in game[2:]:
-                        updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
-                        cursor.execute(updateQuery)
-                else:
-                    for teammateChamp in game[2:]:
-                        updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
-                        cursor.execute(updateQuery)
-                updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
-                cursor.execute(updateQuery, game[0])
+def goThroughTeams(connection):
+    try:
+        cursor = connection.cursor()
+        query = 'SELECT * FROM GameData WHERE checked = 0;'
+        cursor.execute(query)
+        response = cursor.fetchall()
+        count = 0
+        for game in response:
+            gameId = game[0]
+            winner = game[1]
+            team1 = game[2:7]
+            team2 = game[7:12]
+            if winner == '100':
+                winningTeam = team1
+                losingTeam = team2
+            else:
+                winningTeam = team2
+                losingTeam = team1
+            for base in winningTeam:
+                for teammate in winningTeam:
+                    updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = %s;'.format(teammate)
+                    try:
+                        cursor.execute(updateQuery, (base))
+                    except Exception as e:
+                        connection.rollback()
+                        print('Updating pairs has failed:')
+                        print(e)
+                        sys.exit(2)
+                    connection.commit()
+            for base in losingTeam:
+                for teammate in losingTeam:
+                    updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = %s;'.format(teammate)
+                    try:
+                        cursor.execute(updateQuery, (base))
+                    except Exception as e:
+                        connection.rollback()
+                        print('Updating pairs has failed:')
+                        print(e)
+                        sys.exit(2)
+                    connection.commit()
+            updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
+            try:
+                cursor.execute(updateQuery, gameId)
+            except Exception as e:
+                connection.rollback()
+                print('Updating pairs has failed:')
+                print(e)
+                sys.exit(2)
+            connection.commit()
+            print('{0:.2f}% complete.'.format(count/len(response) * 100), end='\r')
+            count += 1
+        print('Finished updating pairs.')
+    except Exception as e:
+        connection.rollback()
+        print('Updating pairs has failed:')
+        print(e)
+        sys.exit(2)
+    connection.commit()
+
+    # for champId in championIds:
+    #     print(champId, end='\r')
+    #     for team in [1, 2]:
+    #         query = 'SELECT gameId, winningTeamId, champId{0}, champId{1}, champId{2}, champId{3}, champId{4} FROM GameData WHERE checked = 0 AND (champId{0} = "%s" OR champId{1}  = "%s" OR champId{2} = "%s" OR champId{3} = "%s" OR champId{4} = "%s");'.format(5 * (team - 1) + 1, 5 * (team - 1) + 2, 5 * (team - 1) + 3, 5 * (team - 1) + 4, 5 * (team - 1) + 5)
+    #         cursor.execute(query, (champId, champId, champId, champId, champId))
+    #         response = cursor.fetchall()
+    #         for game in response:
+    #             if game[1] == str(team * 100):
+    #                 for teammateChamp in game[2:]:
+    #                     updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
+    #                     cursor.execute(updateQuery)
+    #             else:
+    #                 for teammateChamp in game[2:]:
+    #                     updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = "{1}";'.format(teammateChamp, champId)
+    #                     cursor.execute(updateQuery)
+    #             updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
+    
+    # cursor.execute(updateQuery, game[0])
 
 def findBestPairs(champId, championIds, championIdsSorted, connection):
     cursor = connection.cursor()
@@ -49,6 +106,24 @@ def findBestPairs(champId, championIds, championIdsSorted, connection):
         if x != None:
             print(x[2])
 
+def HARD_RESET(championIdsSorted):
+    try:
+        cursor = connection.cursor()
+        query = 'DELETE FROM ChampionData'
+        cursor.execute(query)
+        for champId in championIdsSorted:
+            query = 'INSERT INTO ChampionData (championId) VALUES (%s)'
+            cursor.execute(query, (champId))
+        query = 'UPDATE GameData SET checked = 0;'
+        cursor.execute(query)
+    except Exception as e:
+        connection.rollback()
+        print('Hard reset failed:')
+        print(e)
+        sys.exit(2)
+    connection.commit()
+    print('Hard reset successful.')
+
 if __name__ == '__main__':
     DB_INFO = ''
     with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
@@ -66,15 +141,12 @@ if __name__ == '__main__':
     for x in championIds.keys():
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
-    try:
-        goThroughTeams(championIdsSorted, connection)
-        connection.commit()
-        print('Finished updating pairs.')
-    except:
-        connection.rollback()
-        print('Updating pairs has failed.')
 
-    findBestPairs('421', championIds, championIdsSorted, connection)
+    # HARD_RESET(championIdsSorted)
+
+    goThroughTeams(connection)
+
+    # findBestPairs('421', championIds, championIdsSorted, connection)
     
     connection.close()
 
