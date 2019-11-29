@@ -24,12 +24,21 @@ def goThroughMatches(connection):
                 winner = game[1]
                 team1 = game[2:7]
                 team2 = game[7:12]
+                # Champ id's are sorted as strings, not ints
+                strTeam1 = str(sorted(team1))
+                strTeam2 = str(sorted(team2))
                 if winner == '100':
                     winningTeam = team1
+                    strWinningTeam = strTeam1
                     losingTeam = team2
+                    strLosingTeam = strTeam2
                 else:
                     winningTeam = team2
+                    strWinningTeam = strTeam2
                     losingTeam = team1
+                    strLosingTeam = strTeam1
+                
+                # For champion pairs
                 for base in winningTeam:
                     for teammate in winningTeam:
                         updateQuery = 'UPDATE ChampionData SET {0}w = {0}w + 1 WHERE championId = %s;'.format(teammate)
@@ -38,6 +47,20 @@ def goThroughMatches(connection):
                     for teammate in losingTeam:
                         updateQuery = 'UPDATE ChampionData SET {0}l = {0}l + 1 WHERE championId = %s;'.format(teammate)
                         cursor.execute(updateQuery, (base))
+                
+                # For 5 champion teams
+                for team in [(strWinningTeam, 'wins'), (strLosingTeam, 'losses')]:
+                    query = 'SELECT * FROM FiveChampTeamData WHERE team = %s;'
+                    cursor.execute(query, (team[0]))
+                    fiveChampTeamRow = cursor.fetchall()
+                    if (fiveChampTeamRow == ()):
+                        updateQuery = 'INSERT INTO FiveChampTeamData (team, {0}) VALUES (%s, 1);'.format(team[1])
+                        cursor.execute(updateQuery, (team[0]))
+                    else:
+                        updateQuery = 'UPDATE FiveChampTeamData SET {0} = {0} + 1 WHERE team = %s;'.format(team[1])
+                        cursor.execute(updateQuery, (team[0]))
+
+                # Update checked = 1 for the match that was just checked
                 updateQuery = 'UPDATE GameData SET checked = 1 WHERE checked = 0 AND gameId = %s;'
                 cursor.execute(updateQuery, gameId)
             except Exception as e:
@@ -104,6 +127,8 @@ def HARD_RESET(championIdsSorted):
         for champId in championIdsSorted:
             query = 'INSERT INTO ChampionData (championId) VALUES (%s)'
             cursor.execute(query, (champId))
+        query = 'DELETE FROM FiveChampTeamData'
+        cursor.execute(query)
         query = 'UPDATE GameData SET checked = 0;'
         cursor.execute(query)
     except Exception as e:
@@ -132,9 +157,11 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
+    HARD_RESET(championIdsSorted)
+
     goThroughMatches(connection)
 
-    findBestPairs('69', championIds, championIdsSorted, connection)
+    # findBestPairs('3', championIds, championIdsSorted, connection)
     
     connection.close()
 
