@@ -157,11 +157,9 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    HARD_RESET(championIdsSorted)
-
     goThroughMatches(connection)
 
-    # findBestPairs('3', championIds, championIdsSorted, connection)
+    findBestPairs('157', championIds, championIdsSorted, connection)
     
     connection.close()
 
