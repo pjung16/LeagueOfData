@@ -3,7 +3,7 @@ import './App.css';
 import ChampionTable from './components/ChampionTable.js'
 
 function App() {
-  return (    
+  return (
     <div className="App">
       <ChampionTable />
     </div>

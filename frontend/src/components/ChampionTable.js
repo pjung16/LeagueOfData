@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import ChampionIcon from './ChampionIcon.js'
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -6,59 +7,18 @@ class ChampionTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      champions: [
-        {
-          championName: 'Ahri',
-          hyperLink: 'ahri',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ahri.png',
-        },
-        {
-          championName: 'Bard',
-          hyperLink: 'bard',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Bard.png',
-        },
-        {
-          championName: 'Renekton',
-          hyperLink: 'renekton',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Renekton.png',
-        },
-        {
-          championName: 'Soraka',
-          hyperLink: 'soraka',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Soraka.png',
-        },
-        {
-          championName: 'Talon',
-          hyperLink: 'talon',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Talon.png',
-        },
-        {
-          championName: 'Urgot',
-          hyperLink: 'urgot',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
-        },
-        {
-          championName: 'Urgot',
-          hyperLink: 'urgot',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
-        },
-        {
-          championName: 'Urgot',
-          hyperLink: 'urgot',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
-        },
-        {
-          championName: 'Urgot',
-          hyperLink: 'urgot',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
-        },
-        {
-          championName: 'Urgot',
-          hyperLink: 'urgot',
-          imageLink: 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Urgot.png',
-        },
-      ]
+      champions: []
     };
+    this.apiUrl = 'http://127.0.0.1:5000';
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await axios.get(`${this.apiUrl}/champions`);
+      this.setState({ champions: response.data });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
@@ -67,10 +27,10 @@ class ChampionTable extends Component {
       <div className="container">
         <div className="row justify-content-start">
           {champions.map((champion) => {
-            const { championName, hyperLink, imageLink } = champion;
+            const { championName, hyperLink, imageLink, key } = champion;
             return(
               <ChampionIcon
-                key={championName}
+                key={key}
                 championName={championName}
                 hyperLink={hyperLink}
                 imageLink={imageLink}
