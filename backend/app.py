@@ -1,14 +1,28 @@
 """
 LeagueOfData backend using Flask and PyMySQL
 """
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import pymysql
+import json
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route('/')
-def home():
-    return "Hello World"
+@app.route('/champions', methods=["GET"])
+# @cross_origin(supports_credentials=True)
+def getAllChampions():
+    champions = []
+    with open('championData.json') as json_file:
+        data = json.load(json_file)
+        for champ in data['data'].values():
+            champions.append({
+                'name': champ['name'],
+                'key': champ['key'],
+                'hyperlink': champ['name'].lower(),
+                'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full'])
+            })
+    return jsonify(champions)
 
 if __name__ == '__main__':
     app.run()
