@@ -115,6 +115,7 @@ def findBestPairs(champId, championIds, championIdsSorted, connection):
     for x in winrates:
         if x != None:
             print(x[2])
+    return [i for i in winrates if i]
 
 def HARD_RESET(championIdsSorted):
     try:
@@ -139,6 +140,33 @@ def HARD_RESET(championIdsSorted):
     connection.commit()
     print('Hard reset successful.')
 
+def getBestPairs(champId):
+    DB_INFO = ''
+    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+        DB_INFO = [line.rstrip('\n') for line in key]
+
+    connection = pymysql.connect(host=DB_INFO[0],
+                             port=int(DB_INFO[1]),
+                             user=DB_INFO[2],
+                             password=DB_INFO[3],
+                             db=DB_INFO[4],
+                             charset='utf8mb4')
+
+    championIds = getChampionIdDict()
+    championIdsSorted = []
+    for x in championIds.keys():
+        championIdsSorted.append(int(x))
+    championIdsSorted.sort()
+
+    goThroughMatches(connection)
+
+    bestPairs = findBestPairs(champId, championIds, championIdsSorted, connection)
+    
+    connection.close()
+
+    return bestPairs
+
+
 if __name__ == '__main__':
     DB_INFO = ''
     with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
@@ -159,7 +187,7 @@ if __name__ == '__main__':
 
     goThroughMatches(connection)
 
-    findBestPairs('157', championIds, championIdsSorted, connection)
+    findBestPairs('421', championIds, championIdsSorted, connection)
     
     connection.close()
 
