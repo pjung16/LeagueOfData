@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ChampionTable from './components/ChampionTable.js'
+import PairTable from './components/PairTable.js'
 
 function App() {
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={ChampionTable} />
-          {/* <Route exact path="/champion/:id" component={WIP} /> */}
+          <Route exact path="/" component={ ChampionTable } />
+          <Route exact path="/pairs" component={ PairTable } />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
