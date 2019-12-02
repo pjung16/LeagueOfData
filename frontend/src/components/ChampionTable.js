@@ -15,6 +15,7 @@ class ChampionTable extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(`${this.apiUrl}/champions`);
+      console.log(response.data)
       this.setState({ champions: response.data });
     } catch (e) {
       console.log(e);
@@ -27,11 +28,11 @@ class ChampionTable extends Component {
       <div className="container">
         <div className="row justify-content-start">
           {champions.map((champion) => {
-            const { championName, hyperLink, imageLink, key } = champion;
+            const { name, hyperLink, imageLink, key } = champion;
             return(
               <ChampionIcon
                 key={key}
-                championName={championName}
+                championName={name}
                 hyperLink={hyperLink}
                 imageLink={imageLink}
               >

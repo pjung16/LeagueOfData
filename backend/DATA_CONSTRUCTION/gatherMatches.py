@@ -90,7 +90,7 @@ def findGameData():
     global connection
     cursor = connection.cursor()
     # inserts 1000 games starting from index 2000
-    query = 'SELECT id FROM Games LIMIT 2000, 1000;'
+    query = 'SELECT id FROM Games LIMIT 14624, 3000;'
     cursor.execute(query)
     games = cursor.fetchall()
     MATCH_API = 'https://kr.api.riotgames.com/lol/match/v4/matches/{0}'
