@@ -98,7 +98,7 @@ def goThroughMatches(connection):
     
     # cursor.execute(updateQuery, game[0])
 
-def findBestPairs(champId, championIds, championIdsSorted, connection):
+def findBestPairs(champId, championIdsSorted, connection):
     cursor = connection.cursor()
     query = 'SELECT * FROM ChampionData WHERE championId = %s'
     cursor.execute(query, (champId))
@@ -110,11 +110,8 @@ def findBestPairs(champId, championIds, championIdsSorted, connection):
         elif response[i] + response[i + 1] < 10 or response[i]/(response[i] + response[i + 1]) < 0.5:
             winrates.append(None)
         else:
-            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIds[str(championIdsSorted[i // 2])]))
+            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIdsSorted[i // 2]))
     print(winrates)
-    for x in winrates:
-        if x != None:
-            print(x[2])
 
 def HARD_RESET(championIdsSorted):
     try:
@@ -159,7 +156,7 @@ if __name__ == '__main__':
 
     goThroughMatches(connection)
 
-    findBestPairs('157', championIds, championIdsSorted, connection)
+    findBestPairs('157', championIdsSorted, connection)
     
     connection.close()
 
