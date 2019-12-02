@@ -157,7 +157,7 @@ def getBestPairs(champId):
 
     goThroughMatches(connection)
 
-    bestPairs = findBestPairs(champId, championIds, championIdsSorted, connection)
+    bestPairs = findBestPairs(champId, championIdsSorted, connection)
     
     connection.close()
 

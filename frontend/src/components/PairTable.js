@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ChampionIcon from './ChampionIcon.js'
+import ChampionInfo from './ChampionInfo.js'
 import 'bootstrap/dist/css/bootstrap.css';
 import qs from 'query-string';
 
@@ -8,7 +8,7 @@ class PairTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      champions: []
+      pairs: []
     };
     this.apiUrl = 'http://127.0.0.1:5000';
   }
@@ -20,29 +20,23 @@ class PairTable extends Component {
           champId: qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId
         }
       });
-      console.log(response.data)
-      this.setState({ champions: response.data });
+      this.setState({ pairs: response.data });
     } catch (e) {
       console.log(e);
     }
   }
 
   render() {
-    const { champions } = this.state;
+    const { pairs } = this.state;
     return (
       <div className="container">
-        {/* <div className="row justify-content-start"> */}
-          {champions.map((champion) => {
+        <div className="row justify-content-start">
+          {pairs.map((pair) => {
             return(
-              <p
-                key={champion[2]}
-              >
-                  <div>{champion[2]}</div>
-                  <div>{`${champion[0]*100}% winrate in ${champion[1]} games`}</div>
-              </p>
+              <ChampionInfo key={pair[2]} champId={pair[2]} data={pair} />
             );
           })}
-        {/* </div> */}
+        </div>
       </div>
     )
   }
