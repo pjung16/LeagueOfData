@@ -24,24 +24,48 @@ class ChampionTable extends Component {
 
   render() {
     const { champions } = this.state;
-    return (
-      <div className="container">
-        <div className="row justify-content-start">
-          {champions.map((champion) => {
-            const { name, hyperLink, imageLink, key } = champion;
-            return(
-              <ChampionIcon
-                key={key}
-                championName={name}
-                hyperLink={hyperLink}
-                imageLink={imageLink}
-              >
-              </ChampionIcon>
-            );
-          })}
+
+    if (this.props.filterText !== '') {
+      return (
+        <div className="container">
+          <div className="row justify-content-start">
+            {champions.filter(champion => {
+              return champion.name.toLowerCase().includes(this.props.filterText.toLowerCase())
+            }).map((champion) => {
+              const { name, hyperLink, imageLink, key } = champion;
+              return(
+                <ChampionIcon
+                  key={key}
+                  championName={name}
+                  hyperLink={hyperLink}
+                  imageLink={imageLink}
+                >
+                </ChampionIcon>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className="container">
+          <div className="row justify-content-start">
+            {champions.map((champion) => {
+              const { name, hyperLink, imageLink, key } = champion;
+              return(
+                <ChampionIcon
+                  key={key}
+                  championName={name}
+                  hyperLink={hyperLink}
+                  imageLink={imageLink}
+                >
+                </ChampionIcon>
+              );
+            })}
+          </div>
+        </div>
+      )
+    }
   }
 }
 
