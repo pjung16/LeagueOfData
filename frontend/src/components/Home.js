@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChampionTable from './ChampionTable'
+import Logo from './Logo'
 import 'bootstrap/dist/css/bootstrap.css';
 import SearchFilter from './SearchFilter';
 
@@ -22,7 +23,7 @@ class Home extends Component {
   render() {
     return (
       <div className="container" style={{maxWidth: '950px'}}>
-        <h1 className='header'>League of Data</h1>
+        <Logo />
         <SearchFilter getText={this.getText}/>
         <ChampionTable filterText={this.state.filterText}/>
       </div>

@@ -7,7 +7,7 @@ import ChampionPage from './components/ChampionPage.js'
 
 function App() {
   return (
-    <div className="App" style={{backgroundColor: '#033d45', paddingTop: '100px', minHeight: '100vh'}}>
+    <div className="App">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Home } />
