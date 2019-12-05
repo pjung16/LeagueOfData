@@ -1,0 +1,12 @@
+.col-2:hover {
+  scale: 1.05;
+}
+
+.header {
+  font-style: italic;
+  font-weight: 600;
+  color: #ffffff; 
+  margin-bottom: 50px; 
+  font-size: 70px; 
+  font-family: 'Futura'; 
+}

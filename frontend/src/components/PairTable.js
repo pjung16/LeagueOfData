@@ -17,7 +17,7 @@ class PairTable extends Component {
     try {
       const response = await axios.get(`${this.apiUrl}/pairs`, {
         params: {
-          champId: qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId
+          champId: qs.parse(this.props.url, { ignoreQueryPrefix: true }).champId
         }
       });
       this.setState({ pairs: response.data });

@@ -21,8 +21,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 style={{color: '#ffffff', marginBottom: '50px',}}>League of Data</h1>
+      <div className="container" style={{maxWidth: '950px'}}>
+        <h1 className='header'>League of Data</h1>
         <SearchFilter getText={this.getText}/>
         <ChampionTable filterText={this.state.filterText}/>
       </div>

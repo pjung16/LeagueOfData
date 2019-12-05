@@ -20,7 +20,13 @@ class SearchFilter extends Component {
   render() {
     return (
       <div className="container">
-        <Input onChange={this.handleChange} style={{ marginBottom: '50px' }} size='massive' placeholder='Filter...' />
+        <Input 
+          onChange={this.handleChange} 
+          style={{ marginBottom: '50px' }} 
+          size='huge' 
+          placeholder='Filter...' 
+          fluid
+        />
       </div>
     )
   }
