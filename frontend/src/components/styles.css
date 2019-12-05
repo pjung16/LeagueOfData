@@ -1,3 +1,11 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
 .col-2:hover {
   transform: scale(1.05);
 }
