@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PairTable from './PairTable'
+import PairTable from './PairTable';
+import ChampionChart from'./ChampionChart';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class ChampionPage extends Component {
@@ -13,6 +14,7 @@ class ChampionPage extends Component {
   render() {
     return (
       <div className="container" style={{maxWidth: '950px'}}>
+        <ChampionChart />
         <PairTable url={this.props.location.search} />
       </div>
     )
