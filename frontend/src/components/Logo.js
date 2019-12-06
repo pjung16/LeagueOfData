@@ -7,7 +7,7 @@ class Logo extends Component {
     return (
       <Fragment>
         <Link to={ '/' } style={{textDecoration: 'none'}}>
-          <div style={{marginBottom: '15px'}}>
+          <div className="headerContainer" style={{marginBottom: '15px'}}>
             <img src="logo.png" style={{width: '100px'}}/>
             <h1 className="header">League of Data</h1>
           </div>

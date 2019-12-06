@@ -110,7 +110,7 @@ def findBestPairs(champId, championIdsSorted, connection):
         elif response[i] + response[i + 1] < 10 or response[i]/(response[i] + response[i + 1]) < 0.5:
             winrates.append(None)
         else:
-            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIdsSorted[i // 2]))
+            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIdsSorted[i // 2], response[i], response[i + 1]))
 
     return [i for i in winrates if i]
 

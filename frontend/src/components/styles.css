@@ -18,3 +18,10 @@ a:hover {
   font-size: 70px; 
   font-family: 'Futura'; 
 }
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
