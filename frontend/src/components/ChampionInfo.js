@@ -29,7 +29,7 @@ class ChampionInfo extends Component {
     const { data } = this.props;
     const { name, hyperLink, imageLink } = this.state.champion;
     return (
-      <div className="col-5">
+      <div className="col-5" style={{color: 'white'}}>
         <div className="champion-icon">
           <a href={ hyperLink }>
             <img alt={ name } src={ imageLink } />

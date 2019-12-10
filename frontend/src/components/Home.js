@@ -21,11 +21,12 @@ class Home extends Component {
   }
 
   render() {
+    const { history } = this.props;
     return (
       <div className="container" style={{maxWidth: '950px'}}>
         <Logo />
         <SearchFilter getText={this.getText}/>
-        <ChampionTable filterText={this.state.filterText}/>
+        <ChampionTable history={history} filterText={this.state.filterText}/>
       </div>
     )
   }

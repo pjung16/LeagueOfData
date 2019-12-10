@@ -17,7 +17,7 @@ with open('championData.json') as json_file:
         champions_dict[champ['key']]= {
             'name': champ['name'],
             'key': champ['key'],
-            'hyperlink': champ['name'].lower(),
+            'hyperlink': '/pairs?champId={0}'.format(champ['key']),
             'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full'])
         }
 

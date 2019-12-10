@@ -3,6 +3,17 @@ import json
 import itertools
 import sys
 
+champions_dict = {}
+with open('championData.json') as json_file:
+    data = json.load(json_file)
+    for champ in data['data'].values():
+        champions_dict[champ['key']]= {
+            'name': champ['name'],
+            'key': champ['key'],
+            'hyperlink': champ['name'].lower(),
+            'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full'])
+        }
+
 def getChampionIdDict():
     champions = {}
     with open('championData.json') as json_file:
@@ -110,7 +121,7 @@ def findBestPairs(champId, championIdsSorted, connection):
         elif response[i] + response[i + 1] < 10 or response[i]/(response[i] + response[i + 1]) < 0.5:
             winrates.append(None)
         else:
-            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIdsSorted[i // 2], response[i], response[i + 1]))
+            winrates.append((response[i]/(response[i] + response[i + 1]), response[i] + response[i + 1], championIdsSorted[i // 2], response[i], response[i + 1], champions_dict[str(championIdsSorted[i // 2])]['name']))
 
     return [i for i in winrates if i]
 

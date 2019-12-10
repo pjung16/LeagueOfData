@@ -10,6 +10,8 @@ class ChampionTable extends Component {
       champions: []
     };
     this.apiUrl = 'http://127.0.0.1:5000';
+    
+    this.clicked = this.clicked.bind(this);
   }
 
   async componentDidMount() {
@@ -20,6 +22,10 @@ class ChampionTable extends Component {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  clicked(link) {
+    this.props.history.push(link);
   }
 
   render() {
@@ -36,11 +42,11 @@ class ChampionTable extends Component {
               return(
                 <ChampionIcon
                   key={key}
+                  clicked={this.clicked}
                   championName={name}
                   hyperLink={hyperLink}
                   imageLink={imageLink}
-                >
-                </ChampionIcon>
+                />
               );
             })}
           </div>
@@ -55,6 +61,7 @@ class ChampionTable extends Component {
               return(
                 <ChampionIcon
                   key={key}
+                  clicked={this.clicked}
                   championName={name}
                   hyperLink={hyperLink}
                   imageLink={imageLink}
