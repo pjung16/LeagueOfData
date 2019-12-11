@@ -9,7 +9,7 @@ class ChampionInfo extends Component {
     this.state = {
       champion: []
     };
-    this.apiUrl = 'http://127.0.0.1:5000';
+    this.apiUrl = 'http://3.95.169.184:5000';
   }
 
   async componentDidMount() {
