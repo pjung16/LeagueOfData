@@ -27,21 +27,23 @@ class ChampionPage extends Component {
   async componentDidMount() {
     try {
       console.log(this.props);
+      const champId = qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId;
       const response = await axios.get(`${this.apiUrl}/pairs`, {
         params: {
-          champId: qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId
+          champId: champId
         }
       });
-      const champions = this.getChampions(response.data);
-      const wins = this.getWins(response.data);
-      const losses = this.getLosses(response.data);
+      const pairs = this.removeItself(response.data, champId);
+      const champions = this.getChampions(pairs);
+      const wins = this.getWins(pairs);
+      const losses = this.getLosses(pairs);
       const champInfo = await axios.get(`${this.apiUrl}/championData`, {
         params: {
-          champId: qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId
+          champId: champId
         }
       });
       this.setState({ 
-        pairs: response.data,
+        pairs: pairs,
         champions: champions,
         wins: wins,
         losses: losses,
@@ -50,6 +52,12 @@ class ChampionPage extends Component {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  removeItself(pairs, champId) {
+    const champIds = pairs.map((champion) => champion[2]);
+    pairs.splice(champIds.indexOf(parseInt(champId)), 1);
+    return pairs;
   }
 
   getChampions(res) {
