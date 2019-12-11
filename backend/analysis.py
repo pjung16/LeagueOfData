@@ -174,6 +174,29 @@ def getBestPairs(champId):
 
     return bestPairs
 
+def getChampionData(champId):
+    DB_INFO = ''
+    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+        DB_INFO = [line.rstrip('\n') for line in key]
+
+    connection = pymysql.connect(host=DB_INFO[0],
+                             port=int(DB_INFO[1]),
+                             user=DB_INFO[2],
+                             password=DB_INFO[3],
+                             db=DB_INFO[4],
+                             charset='utf8mb4')
+    cursor = connection.cursor()
+    columns = [f'{champId}w', f'{champId}l']
+    query = 'SELECT ' + columns[0] + ', ' + columns[1] + ' FROM ChampionData WHERE championId = %s'
+    cursor.execute(query, (champId))
+    stats = cursor.fetchall()[0]
+    query = 'SELECT count(*) FROM Games'
+    cursor.execute(query)
+    numGames = cursor.fetchall()[0][0]
+    pickRate = (stats[0] + stats[1])/numGames
+    print([stats, pickRate])
+    return [stats, pickRate]
+
 
 if __name__ == '__main__':
     DB_INFO = ''
@@ -193,9 +216,10 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    goThroughMatches(connection)
+    # goThroughMatches(connection)
 
-    findBestPairs('157', championIdsSorted, connection)
+    # findBestPairs('157', championIdsSorted, connection)
+    getChampionData('1', connection)
     
     connection.close()
 

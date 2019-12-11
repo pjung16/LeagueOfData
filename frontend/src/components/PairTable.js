@@ -14,7 +14,7 @@ class PairTable extends Component {
   render() {
     const { pairs } = this.props;
     return (
-      <div className="container">
+      <div className="container" style={{marginTop: '25px'}}>
         <div className="row justify-content-start">
           {pairs.map((pair) => {
             return(

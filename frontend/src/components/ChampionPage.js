@@ -22,7 +22,6 @@ class ChampionPage extends Component {
     this.getChampions = this.getChampions.bind(this);
     this.getWins = this.getWins.bind(this);
     this.getLosses = this.getLosses.bind(this);
-    this.clicked = this.clicked.bind(this);
   }
 
   async componentDidMount() {
@@ -36,7 +35,7 @@ class ChampionPage extends Component {
       const champions = this.getChampions(response.data);
       const wins = this.getWins(response.data);
       const losses = this.getLosses(response.data);
-      const champInfo = await axios.get(`${this.apiUrl}/champion`, {
+      const champInfo = await axios.get(`${this.apiUrl}/championData`, {
         params: {
           champId: qs.parse(this.props.location.search, { ignoreQueryPrefix: true }).champId
         }
@@ -77,25 +76,51 @@ class ChampionPage extends Component {
     return losses;
   }
 
-  clicked(link) {
-    this.props.history.push(link);
-  }
-
   render() {
     const options = {
       chart: {
-        type: 'column'
+        type: 'column',
+        backgroundColor: 'rgb(25,34,39)',
+        borderColor: '#ffffff',
+        borderWidth: 1
       },
       title: {
-        text: 'Champion Pair Wins & Losses'
+        text: 'Champion Pair Wins & Losses',
+        style: {
+          color: "#ffffff"
+        }
       },
       xAxis: {
-        categories: this.state.champions
+        categories: this.state.champions,
+        labels: {
+          style: {
+            color: "#ffffff"
+          }
+        },
+        title: {
+          text: 'Champions',
+          style: {
+            color: "#ffffff"
+          }
+        }
       },
       yAxis: {
         min: 0,
         title: {
-          text: 'Games'
+          text: 'Games',
+          style: {
+            color: "#ffffff"
+          }
+        },
+        labels: {
+          style: {
+            color: "#ffffff"
+          }
+        },
+      },
+      legend: {
+        itemStyle: {
+          color: '#ffffff',
         }
       },
       tooltip: {
@@ -109,23 +134,25 @@ class ChampionPage extends Component {
       },
       series: [{
         name: 'Wins',
-        data: this.state.wins
+        data: this.state.wins,
+        color: '#38bfc0'
       }, {
         name: 'Losses',
-        data: this.state.losses
+        data: this.state.losses,
+        color: '#fd5d5f'
       }]
     };
     const { pairs } = this.state;
-    const { name, hyperLink, imageLink } = this.state.champInfo;
+    const { name, hyperLink, imageLink, wins, losses, pickRate } = this.state.champInfo;
     return (
-      <div className="container" style={{maxWidth: '950px'}}>
+      <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
         <Logo />
         <ChampionIcon
-          clicked={this.clicked}
           championName={name}
           hyperLink={hyperLink}
           imageLink={imageLink}
         />
+        <div style={{marginBottom: '25px'}}>{`Wins: ${wins} Losses: ${losses} Win Rate: ${(wins/(wins+losses)*100).toFixed(2)}% Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
         <ChampionChart 
           options={options}
         />

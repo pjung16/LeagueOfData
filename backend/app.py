@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import pymysql
 import json
-from analysis import getBestPairs
+from analysis import getBestPairs, getChampionData
 
 app = Flask(__name__)
 CORS(app)
@@ -32,7 +32,7 @@ def getAllChampions():
                 'name': champ['name'],
                 'key': champ['key'],
                 'hyperLink': '/pairs?champId={0}'.format(champ['key']),
-                'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full'])
+                'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full']),
             })
     return jsonify(champions)
 
@@ -42,6 +42,18 @@ def getChampion():
     champId = request.args.get('champId')
     data = champions_dict[champId]
     return jsonify(data)
+
+@app.route('/championData', methods=["GET"])
+# @cross_origin(supports_credentials=True)
+def getChampData():
+    champId = request.args.get('champId')
+    champData = champions_dict[champId]
+    champNumbers = getChampionData(champId)
+    champData['wins'] = champNumbers[0][0]
+    champData['losses'] = champNumbers[0][1]
+    champData['pickRate'] = champNumbers[1]
+    print(champData)
+    return jsonify(champData)
 
 @app.route('/pairs', methods=["GET"])
 # @cross_origin(supports_credentials=True)
