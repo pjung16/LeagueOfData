@@ -17,7 +17,7 @@ class ChampionPage extends Component {
       losses: [],
       champInfo: {},
     };
-    this.apiUrl = 'http://127.0.0.1:5000';
+    this.apiUrl = 'https://3.95.169.184:5000';
 
     this.getChampions = this.getChampions.bind(this);
     this.getWins = this.getWins.bind(this);

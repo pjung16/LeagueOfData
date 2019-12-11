@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -9,7 +10,9 @@ class ChampionInfo extends Component {
     this.state = {
       champion: []
     };
-    this.apiUrl = 'http://127.0.0.1:5000';
+    this.apiUrl = 'https://3.95.169.184:5000';
+
+    this.onClick = this.onClick.bind(this);
   }
 
   async componentDidMount() {
@@ -25,11 +28,20 @@ class ChampionInfo extends Component {
     }
   }
 
+  onClick() {
+    console.log(this.state.champion)
+    this.props.history.push({
+      pathname: '/pairs',
+      search: `?champId=${this.props.champId}`
+    });
+    window.location.reload(false);
+  }
+
   render() {
     const { data } = this.props;
     const { name, hyperLink, imageLink } = this.state.champion;
     return (
-      <div className="col-3" style={{marginBottom: '15px', color: 'white'}}>
+      <div className="col-3" style={{marginBottom: '15px', color: 'white'}} onClick={this.onClick}>
         <div className="champion-icon">
           <a href={ hyperLink }>
             <img alt={ name } src={ imageLink } />
@@ -47,4 +59,4 @@ class ChampionInfo extends Component {
   }
 }
 
-export default ChampionInfo;
+export default withRouter(ChampionInfo);
