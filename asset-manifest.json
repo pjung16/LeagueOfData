@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.4d0abee3.chunk.css",
-    "main.js": "/static/js/main.07a7aa70.chunk.js",
-    "main.js.map": "/static/js/main.07a7aa70.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.baeb1881.js",
-    "runtime-main.js.map": "/static/js/runtime-main.baeb1881.js.map",
-    "static/css/2.1acfca04.chunk.css": "/static/css/2.1acfca04.chunk.css",
-    "static/js/2.976aefdf.chunk.js": "/static/js/2.976aefdf.chunk.js",
-    "static/js/2.976aefdf.chunk.js.map": "/static/js/2.976aefdf.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.241246f1ebc31b7b77c9f0f4b044ccdc.js": "/precache-manifest.241246f1ebc31b7b77c9f0f4b044ccdc.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.1acfca04.chunk.css.map": "/static/css/2.1acfca04.chunk.css.map",
-    "static/css/main.4d0abee3.chunk.css.map": "/static/css/main.4d0abee3.chunk.css.map",
-    "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff"
+    "main.css": "/leagueofdata/static/css/main.4d0abee3.chunk.css",
+    "main.js": "/leagueofdata/static/js/main.87e19225.chunk.js",
+    "main.js.map": "/leagueofdata/static/js/main.87e19225.chunk.js.map",
+    "runtime-main.js": "/leagueofdata/static/js/runtime-main.a55ce6c7.js",
+    "runtime-main.js.map": "/leagueofdata/static/js/runtime-main.a55ce6c7.js.map",
+    "static/css/2.6af6881f.chunk.css": "/leagueofdata/static/css/2.6af6881f.chunk.css",
+    "static/js/2.976aefdf.chunk.js": "/leagueofdata/static/js/2.976aefdf.chunk.js",
+    "static/js/2.976aefdf.chunk.js.map": "/leagueofdata/static/js/2.976aefdf.chunk.js.map",
+    "index.html": "/leagueofdata/index.html",
+    "precache-manifest.0a461421a799576499b1ce00890197d8.js": "/leagueofdata/precache-manifest.0a461421a799576499b1ce00890197d8.js",
+    "service-worker.js": "/leagueofdata/service-worker.js",
+    "static/css/2.6af6881f.chunk.css.map": "/leagueofdata/static/css/2.6af6881f.chunk.css.map",
+    "static/css/main.4d0abee3.chunk.css.map": "/leagueofdata/static/css/main.4d0abee3.chunk.css.map",
+    "static/media/semantic.min.css": "/leagueofdata/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.baeb1881.js",
-    "static/css/2.1acfca04.chunk.css",
+    "static/js/runtime-main.a55ce6c7.js",
+    "static/css/2.6af6881f.chunk.css",
     "static/js/2.976aefdf.chunk.js",
     "static/css/main.4d0abee3.chunk.css",
-    "static/js/main.07a7aa70.chunk.js"
+    "static/js/main.87e19225.chunk.js"
   ]
 }
