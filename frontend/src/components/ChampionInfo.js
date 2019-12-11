@@ -10,7 +10,7 @@ class ChampionInfo extends Component {
     this.state = {
       champion: []
     };
-    this.apiUrl = 'http://3.95.169.184:5000';
+    this.apiUrl = 'https://3.95.169.184:5000';
 
     this.onClick = this.onClick.bind(this);
   }
