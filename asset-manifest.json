@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/LeagueOfData/static/css/main.4d0abee3.chunk.css",
-    "main.js": "/LeagueOfData/static/js/main.7c8c778f.chunk.js",
-    "main.js.map": "/LeagueOfData/static/js/main.7c8c778f.chunk.js.map",
+    "main.js": "/LeagueOfData/static/js/main.4ca36e73.chunk.js",
+    "main.js.map": "/LeagueOfData/static/js/main.4ca36e73.chunk.js.map",
     "runtime-main.js": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js",
     "runtime-main.js.map": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js.map",
     "static/css/2.4b8d5adb.chunk.css": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css",
-    "static/js/2.e1a9c0db.chunk.js": "/LeagueOfData/static/js/2.e1a9c0db.chunk.js",
-    "static/js/2.e1a9c0db.chunk.js.map": "/LeagueOfData/static/js/2.e1a9c0db.chunk.js.map",
+    "static/js/2.a151dab4.chunk.js": "/LeagueOfData/static/js/2.a151dab4.chunk.js",
+    "static/js/2.a151dab4.chunk.js.map": "/LeagueOfData/static/js/2.a151dab4.chunk.js.map",
     "index.html": "/LeagueOfData/index.html",
-    "precache-manifest.3f1f786347cb40e582b5a43d36bdb2e9.js": "/LeagueOfData/precache-manifest.3f1f786347cb40e582b5a43d36bdb2e9.js",
+    "precache-manifest.77565ab141ad70a77b16415732b22f41.js": "/LeagueOfData/precache-manifest.77565ab141ad70a77b16415732b22f41.js",
     "service-worker.js": "/LeagueOfData/service-worker.js",
     "static/css/2.4b8d5adb.chunk.css.map": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css.map",
     "static/css/main.4d0abee3.chunk.css.map": "/LeagueOfData/static/css/main.4d0abee3.chunk.css.map",
@@ -18,8 +18,8 @@
   "entrypoints": [
     "static/js/runtime-main.bc63fd6a.js",
     "static/css/2.4b8d5adb.chunk.css",
-    "static/js/2.e1a9c0db.chunk.js",
+    "static/js/2.a151dab4.chunk.js",
     "static/css/main.4d0abee3.chunk.css",
-    "static/js/main.7c8c778f.chunk.js"
+    "static/js/main.4ca36e73.chunk.js"
   ]
 }
