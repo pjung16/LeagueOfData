@@ -156,10 +156,10 @@ class ChampionPage extends Component {
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
         <Logo />
         <ChampionIcon
-          championName={name}
           hyperLink={hyperLink}
           imageLink={imageLink}
         />
+        <h2>{ name }</h2>
         <div style={{marginBottom: '25px'}}>{`Wins: ${wins} Losses: ${losses} Win Rate: ${(wins/(wins+losses)*100).toFixed(2)}% Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
         <ChampionChart 
           options={options}
