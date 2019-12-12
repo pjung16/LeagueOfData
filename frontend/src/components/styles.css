@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: white !important;
 }
 
 a:hover {
@@ -11,7 +12,7 @@ h2 {
 }
 
 .col-2:hover {
-  transform: scale(1.05);
+  filter: brightness(125%);
 }
 
 .heading {
@@ -24,9 +25,8 @@ h2 {
 .headerContainer {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 24px;
 }
 
 .logo {
@@ -34,8 +34,29 @@ h2 {
   margin: 32px;
 }
 
+.champion-select {
+  margin-bottom: 28px;
+  color: white;
+  cursor: pointer;
+  border-left: solid 1px ;
+  border-right: solid 1px ;
+  border-color: #54676e;
+  background-color: #1f2b30;
+}
+
 .champion-icon {
   margin-top: 28px;
+}
+
+.champion-chosen {
+  height: 300px;
+  width: 200px;
+  margin: 40px auto;
+  overflow: auto;
+  border-left: solid 1px ;
+  border-right: solid 1px ;
+  /* border-color: #54676e; */
+  border-color: #dbc88a;
 }
 
 .champion-stats {
@@ -46,15 +67,22 @@ h2 {
   margin-bottom: 28px;
   color: white;
   cursor: pointer;
-  border: solid 1px ;
+  border-left: solid 1px ;
+  border-right: solid 1px ;
   border-color: #54676e;
   background-color: #1f2b30;
   height: 248px !important;
 }
 
+.champion-info:hover {
+  filter: brightness(125%)
+}
+
 .champion-name {
   font-weight: bold !important;
   margin: 2px;
+  text-decoration: none;
+  color: white;
 }
 
 .win {

@@ -17,13 +17,13 @@ class ChampionIcon extends Component {
   render() {
     const { championName, hyperLink, imageLink } = this.props;
     return (
-      <div style={{marginBottom: '15px'}}>
+      <div style={{marginBottom: '15px', marginTop: '15px'}}>
         <Link to={ hyperLink }>
           <div className="champion-icon">
               <img alt={ championName } src={ imageLink } />
           </div>
           <div className="champion-name">
-            <a href={ hyperLink } style={{textDecoration: 'none', color: 'white'}}>
+            <a href={ hyperLink }>
               { championName }
             </a>
           </div>

@@ -156,15 +156,17 @@ class ChampionPage extends Component {
     return (
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
         <Header />
-        <ChampionIcon
-          hyperLink={hyperLink}
-          imageLink={imageLink}
-        />
-        <h2>{ name }</h2>
-        <div className="champion-stats">
-          <div>Wins: <span className="win">{`${wins}`}</span> | Losses: <span className="loss">{`${losses}`}</span></div>
-          <div>Win Rate: <span className="winrate">{`${(wins/(wins+losses)*100).toFixed(2)}%`}</span></div>
-          <div>{`Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
+        <div className="champion-chosen">
+          <ChampionIcon
+            hyperLink={hyperLink}
+            imageLink={imageLink}
+            />
+          <h2>{ name }</h2>
+          <div className="champion-stats">
+            <div>Wins: <span className="win">{`${wins}`}</span> | Losses: <span className="loss">{`${losses}`}</span></div>
+            <div>Win Rate: <span className="winrate">{`${(wins/(wins+losses)*100).toFixed(2)}%`}</span></div>
+            <div>{`Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
+          </div>
         </div>
         <ChampionChart 
           options={options}
