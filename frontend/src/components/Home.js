@@ -24,7 +24,6 @@ class Home extends Component {
     const { history } = this.props;
     return (
       <div className="container" style={{maxWidth: '950px'}}>
-        <Header />
         <SearchFilter getText={this.getText}/>
         <ChampionTable history={history} filterText={this.state.filterText}/>
       </div>

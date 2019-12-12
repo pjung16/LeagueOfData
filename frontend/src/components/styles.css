@@ -18,20 +18,29 @@ h2 {
 .heading {
   font-weight: bold;
   color: #ffffff; 
-  font-size: 48px; 
-  font-family: 'Arial'; 
+  font-size: 36px; 
+  font-family: 'Arial';
+  display:inline-block;
+  vertical-align: middle;
+  margin-right: 48px;
 }
 
-.headerContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 24px;
+.header-item {
+  color: #ffffff; 
+  font-size: 20px; 
+  font-family: 'Arial';
+  display:inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.header-container {
+  background-color: #1f2b30;
 }
 
 .logo {
   max-width: 64px;
-  margin: 32px;
+  margin: 10px;
 }
 
 .champion-select {
