@@ -34,7 +34,7 @@ class ChampionTable extends Component {
             }).map((champion) => {
               const { name, hyperLink, imageLink, key } = champion;
               return(
-                <div className="col-2">
+                <div className="champion-select col-2">
                   <ChampionIcon
                     key={key}
                     championName={name}
