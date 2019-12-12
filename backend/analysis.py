@@ -2,6 +2,7 @@ import pymysql.cursors
 import json
 import itertools
 import sys
+from ast import literal_eval
 
 champions_dict = {}
 with open('championData.json') as json_file:
@@ -195,6 +196,27 @@ def getChampionData(champId):
     print([stats, pickRate])
     return [stats, pickRate]
 
+def getBestTeamComp():
+    connection = pymysql.connect(host=DB_INFO[0],
+                             port=int(DB_INFO[1]),
+                             user=DB_INFO[2],
+                             password=DB_INFO[3],
+                             db=DB_INFO[4],
+                             charset='utf8mb4')
+    cursor = connection.cursor()
+    query = '''SELECT team, wins, losses, ROUND(( wins/(wins+losses) * 100 ),2) AS percentage 
+               FROM FiveChampTeamData 
+               ORDER BY percentage DESC, wins DESC
+               LIMIT 1'''
+    cursor.execute(query)
+    response = cursor.fetchall()[0]
+    query = 'SELECT team FROM FiveChampTeamData WHERE wins = %s AND losses = %s'
+    cursor.execute(query, (response[1], response[2]))
+    response = cursor.fetchall()
+    bestTeams = []
+    for r in response:
+        bestTeams.append(literal_eval(r[0]))
+    return bestTeams
 
 if __name__ == '__main__':
     DB_INFO = ''
@@ -214,10 +236,12 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    goThroughMatches(connection)
+    # goThroughMatches(connection)
 
-    findBestPairs('157', championIdsSorted, connection)
-    getChampionData('1', connection)
+    # findBestPairs('157', championIdsSorted, connection)
+    # getChampionData('1', connection)
+
+    getBestTeamComp()
     
     connection.close()
 

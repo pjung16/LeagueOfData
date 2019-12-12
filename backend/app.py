@@ -5,7 +5,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import pymysql
 import json
-from analysis import getBestPairs, getChampionData
+from analysis import getBestPairs, getChampionData, getBestTeamComp
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +20,11 @@ with open('championData.json') as json_file:
             'hyperlink': '/pairs?champId={0}'.format(champ['key']),
             'imageLink': 'https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/{0}'.format(champ['image']['full'])
         }
+
+@app.route('/', methods=["GET"])
+# @cross_origin(supports_credentials=True)
+def hello():
+    return "<h1>Welcome to the League of Data</h1>"
 
 @app.route('/champions', methods=["GET"])
 # @cross_origin(supports_credentials=True)
@@ -62,5 +67,11 @@ def getAllPairs():
     bestPairs = getBestPairs(champId)
     return jsonify(bestPairs)
 
+@app.route('/bestTeams', methods=["GET"])
+# @cross_origin(supports_credentials=True)
+def getBestTeams():
+    bestTeams = getBestTeamComp()
+    return jsonify(bestTeams)
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', ssl_context=('cert.pem', 'key.pem'))
