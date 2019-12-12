@@ -31,8 +31,8 @@ p {
 }
 
 .header-item {
-  color: #ffffff; 
-  font-size: 18px; 
+  color: #ffffff;
+  font-size: 18px;
   font-family: 'Arial';
   display:inline-block;
   vertical-align: middle;
@@ -81,6 +81,7 @@ p {
   border-right: solid 1px ;
   /* border-color: #54676e; */
   border-color: #dbc88a;
+  overflow: hidden;
 }
 
 .champion-stats {
