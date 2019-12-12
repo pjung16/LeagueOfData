@@ -23,6 +23,10 @@ class Home extends Component {
     const { history } = this.props;
     return (
       <div className="container" style={{maxWidth: '950px'}}>
+        <div className="container prompt" style={{marginBottom: '50px'}}>
+          <h1>CHOOSE YOUR CHAMPION</h1>
+          <p>and explore its statistically ideal partners.</p>
+        </div>
         <SearchFilter getText={this.getText}/>
         <ChampionTable history={history} filterText={this.state.filterText}/>
       </div>

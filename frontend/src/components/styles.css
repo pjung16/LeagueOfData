@@ -16,6 +16,27 @@ p {
   text-align: left;
 }
 
+.prompt {
+  color: white;
+  text-align: left;
+}
+
+.prompt h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.prompt p{
+  color: white;
+  text-align: left;
+  font-size: 24px;
+}
+
+.prompt {
+  color: white;
+  text-align: left;
+}
+
 .champion-select:hover {
   filter: brightness(125%);
 }
@@ -56,6 +77,10 @@ p {
   margin: 0 auto;
   margin-bottom: 64px;
   text-align: center;
+}
+
+.about-header h1 {
+  font-weight: bold;
 }
 
 .about-link {
