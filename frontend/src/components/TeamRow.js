@@ -36,7 +36,7 @@ class TeamRow extends Component {
     const { champions } = this.state;
     return (
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="row justify-content-center best-team">
           {champions.map((champion, i) => {
             const { name, hyperlink, imageLink, key } = champion;
             return(
