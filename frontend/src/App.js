@@ -6,6 +6,7 @@ import Header from './components/Header.js';
 import Home from './components/Home';
 import ChampionPage from './components/ChampionPage';
 import BestTeamsPage from './components/BestTeamsPage';
+import AboutPage from './components/AboutPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/" component={ Home } />
             <Route path="/pairs" component={ ChampionPage } />
             <Route exact path="/bestTeams" component= { BestTeamsPage } />
+            <Route exact path="/about" component= { AboutPage } />
           </Switch>
         </HashRouter>
       </div>

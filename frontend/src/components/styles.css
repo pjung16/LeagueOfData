@@ -11,6 +11,11 @@ h2 {
   font-weight: bold !important;
 }
 
+p {
+  font-size: 16px;
+  text-align: left;
+}
+
 .champion-select:hover {
   filter: brightness(125%);
 }
@@ -41,6 +46,16 @@ h2 {
 .logo {
   max-width: 64px;
   margin: 10px;
+}
+
+.about-header {
+  border-left: 1px solid #7b97cc;
+  border-bottom-color: #7b97cc;
+  border-right: 1px solid #7b97cc;
+  border-top-color: #7b97cc;
+  width: 260px;
+  margin: 0 auto;
+  margin-bottom: 25px;
 }
 
 .champion-select {
