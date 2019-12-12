@@ -18,8 +18,11 @@ class BestTeamsPage extends Component {
     try {
       console.log(this.props);
       const response = await axios.get(`${this.apiUrl}/bestTeams`);
+      const { teams, wins, losses } = response.data;
       this.setState({ 
-        teams: response.data,
+        teams: teams,
+        wins: wins,
+        losses: losses,
       });
     } catch (e) {
       console.log(e);
@@ -27,12 +30,13 @@ class BestTeamsPage extends Component {
   }
 
   render() {
-    const { teams } = this.state;
+    const { teams, wins, losses } = this.state;
 
     return (
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
         <Header />
         <h1>Best Teams</h1>
+        <h3>{`${teams.length} teams have a win rate of ${(wins/(wins+losses)*100).toFixed(2)}% with ${wins} wins and ${losses} losses`}</h3>
         {teams.map((team) => {
           return (
             <TeamRow key={team} team={team} />
