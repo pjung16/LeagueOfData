@@ -1,26 +1,25 @@
 {
   "files": {
-    "main.css": "/LeagueOfData/static/css/main.e8fcf148.chunk.css",
-    "main.js": "/LeagueOfData/static/js/main.f3ae804c.chunk.js",
-    "main.js.map": "/LeagueOfData/static/js/main.f3ae804c.chunk.js.map",
-    "runtime-main.js": "/LeagueOfData/static/js/runtime-main.22cc598c.js",
-    "runtime-main.js.map": "/LeagueOfData/static/js/runtime-main.22cc598c.js.map",
-    "static/css/2.eb795263.chunk.css": "/LeagueOfData/static/css/2.eb795263.chunk.css",
-    "static/js/2.f5077244.chunk.js": "/LeagueOfData/static/js/2.f5077244.chunk.js",
-    "static/js/2.f5077244.chunk.js.map": "/LeagueOfData/static/js/2.f5077244.chunk.js.map",
+    "main.css": "/LeagueOfData/static/css/main.13e3668a.chunk.css",
+    "main.js": "/LeagueOfData/static/js/main.089d5d7b.chunk.js",
+    "main.js.map": "/LeagueOfData/static/js/main.089d5d7b.chunk.js.map",
+    "runtime-main.js": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js",
+    "runtime-main.js.map": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js.map",
+    "static/css/2.4b8d5adb.chunk.css": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css",
+    "static/js/2.ef1ca138.chunk.js": "/LeagueOfData/static/js/2.ef1ca138.chunk.js",
+    "static/js/2.ef1ca138.chunk.js.map": "/LeagueOfData/static/js/2.ef1ca138.chunk.js.map",
     "index.html": "/LeagueOfData/index.html",
-    "precache-manifest.2b51116ad70aa902ccb05ac524318a4f.js": "/LeagueOfData/precache-manifest.2b51116ad70aa902ccb05ac524318a4f.js",
+    "precache-manifest.a8f115d3cf2eebeb1ae93371234b16a1.js": "/LeagueOfData/precache-manifest.a8f115d3cf2eebeb1ae93371234b16a1.js",
     "service-worker.js": "/LeagueOfData/service-worker.js",
-    "static/css/2.eb795263.chunk.css.map": "/LeagueOfData/static/css/2.eb795263.chunk.css.map",
-    "static/css/main.e8fcf148.chunk.css.map": "/LeagueOfData/static/css/main.e8fcf148.chunk.css.map",
-    "static/js/2.f5077244.chunk.js.LICENSE": "/LeagueOfData/static/js/2.f5077244.chunk.js.LICENSE",
+    "static/css/2.4b8d5adb.chunk.css.map": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css.map",
+    "static/css/main.13e3668a.chunk.css.map": "/LeagueOfData/static/css/main.13e3668a.chunk.css.map",
     "static/media/semantic.min.css": "/LeagueOfData/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.22cc598c.js",
-    "static/css/2.eb795263.chunk.css",
-    "static/js/2.f5077244.chunk.js",
-    "static/css/main.e8fcf148.chunk.css",
-    "static/js/main.f3ae804c.chunk.js"
+    "static/js/runtime-main.bc63fd6a.js",
+    "static/css/2.4b8d5adb.chunk.css",
+    "static/js/2.ef1ca138.chunk.js",
+    "static/css/main.13e3668a.chunk.css",
+    "static/js/main.089d5d7b.chunk.js"
   ]
 }
