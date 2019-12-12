@@ -21,7 +21,7 @@ class Header extends Component {
                 <Link class="nav-link" to="/bestTeams">Best Teams</Link>
               </li>
               <li class="header-item">
-                <Link class="nav-link" to="/aboutUs">About Us</Link>
+                <Link class="nav-link" to="/about">About</Link>
               </li>
             </ul>
           </div>
