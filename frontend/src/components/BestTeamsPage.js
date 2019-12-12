@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TeamRow from './TeamRow';
-import Header from './Header';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -34,7 +33,6 @@ class BestTeamsPage extends Component {
 
     return (
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
-        <Header />
         <div className="best-teams-header">
           <h1>Best Teams</h1>
           <h4 className="best-teams-stats">

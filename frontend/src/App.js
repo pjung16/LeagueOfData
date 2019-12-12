@@ -11,9 +11,9 @@ import AboutPage from './components/AboutPage';
 function App() {
   return (
     <div>
-    <Header />
       <div className="App">
         <HashRouter>
+          <Header />
           <Switch>
             <Route exact path="/" component={ Home } />
             <Route path="/pairs" component={ ChampionPage } />
