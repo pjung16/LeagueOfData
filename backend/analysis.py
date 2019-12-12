@@ -215,11 +215,17 @@ def getBestTeamComp():
     response = cursor.fetchall()[0]
     query = 'SELECT team FROM FiveChampTeamData WHERE wins = %s AND losses = %s'
     cursor.execute(query, (response[1], response[2]))
-    response = cursor.fetchall()
+    teams = cursor.fetchall()
     bestTeams = []
-    for r in response:
-        bestTeams.append(literal_eval(r[0]))
-    return bestTeams
+    for t in teams:
+        bestTeams.append(literal_eval(t[0]))
+    bestTeams_dict = {
+        teams: bestTeams,
+        wins: response[1],
+        losses: response[2],
+        percentage: response[3]
+    }
+    return bestTeams_dict
 
 if __name__ == '__main__':
     DB_INFO = ''
