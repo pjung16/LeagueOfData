@@ -2,14 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
-class Logo extends Component {
+class Header extends Component {
   render() {
     return (
       <Fragment>
         <Link to={ '/' } style={{textDecoration: 'none'}}>
-          <div className="headerContainer" style={{marginBottom: '15px'}}>
-            <img src="logo.png" style={{width: '100px'}}/>
-            <h1 className="header">League of Data</h1>
+          <div className="headerContainer">
+            <img src="logo.png" className="logo"/>
+            <h1 className="heading">League of Data</h1>
           </div>
         </Link>
       </Fragment>
@@ -17,4 +17,4 @@ class Logo extends Component {
   }
 }
 
-export default Logo;
+export default Header;

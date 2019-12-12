@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChampionTable from './ChampionTable'
-import Logo from './Logo'
+import Header from './Header'
 import 'bootstrap/dist/css/bootstrap.css';
 import SearchFilter from './SearchFilter';
 
@@ -24,7 +24,7 @@ class Home extends Component {
     const { history } = this.props;
     return (
       <div className="container" style={{maxWidth: '950px'}}>
-        <Logo />
+        <Header />
         <SearchFilter getText={this.getText}/>
         <ChampionTable history={history} filterText={this.state.filterText}/>
       </div>

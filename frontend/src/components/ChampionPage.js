@@ -3,8 +3,9 @@ import axios from 'axios';
 import qs from 'query-string';
 import PairTable from './PairTable';
 import ChampionChart from './ChampionChart';
-import Logo from './Logo';
+import Header from './Header';
 import ChampionIcon from './ChampionIcon';
+import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class ChampionPage extends Component {
@@ -154,13 +155,17 @@ class ChampionPage extends Component {
     const { name, hyperLink, imageLink, wins, losses, pickRate } = this.state.champInfo;
     return (
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
-        <Logo />
+        <Header />
         <ChampionIcon
           hyperLink={hyperLink}
           imageLink={imageLink}
         />
         <h2>{ name }</h2>
-        <div style={{marginBottom: '25px'}}>{`Wins: ${wins} Losses: ${losses} Win Rate: ${(wins/(wins+losses)*100).toFixed(2)}% Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
+        <div className="champion-stats">
+          <div>Wins: <span className="win">{`${wins}`}</span> | Losses: <span className="loss">{`${losses}`}</span></div>
+          <div>{` Win Rate: ${(wins/(wins+losses)*100).toFixed(2)}%`}</div>
+          <div>{`Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
+        </div>
         <ChampionChart 
           options={options}
         />

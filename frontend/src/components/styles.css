@@ -6,11 +6,15 @@ a:hover {
   text-decoration: none !important;
 }
 
+h2 {
+  font-weight: bold !important;
+}
+
 .col-2:hover {
   transform: scale(1.05);
 }
 
-.header {
+.heading {
   font-style: italic;
   font-weight: 600;
   color: #ffffff; 
@@ -24,4 +28,34 @@ a:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo {
+  margin-right: 24px;
+  max-width: 100px;
+}
+
+.champion-stats {
+  margin-bottom: 25px;
+}
+
+.champion-info {
+  margin-bottom: 15px;
+  color: white;
+  cursor: pointer;
+  /* border: solid 1px; */
+}
+
+.champion-name {
+  font-weight: bold !important;
+  margin: 2px;
+}
+
+.win {
+  color: #00b7b7;
+}
+
+.loss {
+ color: #ff5358;
 }

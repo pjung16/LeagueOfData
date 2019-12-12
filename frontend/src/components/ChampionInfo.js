@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -41,7 +42,7 @@ class ChampionInfo extends Component {
     const { data } = this.props;
     const { name, hyperLink, imageLink } = this.state.champion;
     return (
-      <div className="col-3" style={{marginBottom: '15px', color: 'white'}} onClick={this.onClick}>
+      <div className="champion-info col-3" onClick={this.onClick}>
         <div className="champion-icon">
           <a href={ hyperLink }>
             <img alt={ name } src={ imageLink } />
