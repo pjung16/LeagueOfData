@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/LeagueOfData/static/css/main.4d0abee3.chunk.css",
-    "main.js": "/LeagueOfData/static/js/main.d37ab88b.chunk.js",
-    "main.js.map": "/LeagueOfData/static/js/main.d37ab88b.chunk.js.map",
+    "main.js": "/LeagueOfData/static/js/main.0e6dd764.chunk.js",
+    "main.js.map": "/LeagueOfData/static/js/main.0e6dd764.chunk.js.map",
     "runtime-main.js": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js",
     "runtime-main.js.map": "/LeagueOfData/static/js/runtime-main.bc63fd6a.js.map",
     "static/css/2.4b8d5adb.chunk.css": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css",
     "static/js/2.a151dab4.chunk.js": "/LeagueOfData/static/js/2.a151dab4.chunk.js",
     "static/js/2.a151dab4.chunk.js.map": "/LeagueOfData/static/js/2.a151dab4.chunk.js.map",
     "index.html": "/LeagueOfData/index.html",
-    "precache-manifest.66fe55e637f77b173d40b8aa5aaa97b8.js": "/LeagueOfData/precache-manifest.66fe55e637f77b173d40b8aa5aaa97b8.js",
+    "precache-manifest.9ce8321313f6e55a6de6acc5baac5be1.js": "/LeagueOfData/precache-manifest.9ce8321313f6e55a6de6acc5baac5be1.js",
     "service-worker.js": "/LeagueOfData/service-worker.js",
     "static/css/2.4b8d5adb.chunk.css.map": "/LeagueOfData/static/css/2.4b8d5adb.chunk.css.map",
     "static/css/main.4d0abee3.chunk.css.map": "/LeagueOfData/static/css/main.4d0abee3.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.4b8d5adb.chunk.css",
     "static/js/2.a151dab4.chunk.js",
     "static/css/main.4d0abee3.chunk.css",
-    "static/js/main.d37ab88b.chunk.js"
+    "static/js/main.0e6dd764.chunk.js"
   ]
 }
