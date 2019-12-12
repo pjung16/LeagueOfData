@@ -166,8 +166,6 @@ def getBestPairs(champId):
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    goThroughMatches(connection)
-
     bestPairs = findBestPairs(champId, championIdsSorted, connection)
     
     connection.close()
@@ -216,9 +214,9 @@ if __name__ == '__main__':
         championIdsSorted.append(int(x))
     championIdsSorted.sort()
 
-    # goThroughMatches(connection)
+    goThroughMatches(connection)
 
-    # findBestPairs('157', championIdsSorted, connection)
+    findBestPairs('157', championIdsSorted, connection)
     getChampionData('1', connection)
     
     connection.close()
