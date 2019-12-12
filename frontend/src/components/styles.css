@@ -15,25 +15,27 @@ h2 {
 }
 
 .heading {
-  font-style: italic;
-  font-weight: 600;
+  font-weight: bold;
   color: #ffffff; 
-  margin-bottom: 50px; 
-  font-size: 70px; 
-  font-family: 'Futura'; 
+  font-size: 48px; 
+  font-family: 'Arial'; 
 }
 
 .headerContainer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 50px;
 }
 
 .logo {
-  margin-right: 24px;
-  max-width: 100px;
+  max-width: 64px;
+  margin: 32px;
+}
+
+.champion-icon {
+  margin-top: 28px;
 }
 
 .champion-stats {
@@ -41,10 +43,13 @@ h2 {
 }
 
 .champion-info {
-  margin-bottom: 15px;
+  margin-bottom: 28px;
   color: white;
   cursor: pointer;
-  /* border: solid 1px; */
+  border: solid 1px ;
+  border-color: #54676e;
+  background-color: #1f2b30;
+  height: 248px !important;
 }
 
 .champion-name {
@@ -58,4 +63,8 @@ h2 {
 
 .loss {
  color: #ff5358;
+}
+
+.winrate {
+  color: #dbc88a
 }

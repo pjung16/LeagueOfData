@@ -53,7 +53,8 @@ class ChampionInfo extends Component {
             { name }
           </a>
         </div>
-        <div>{`${(data[0]*100).toFixed(2)}% winrate in ${data[1]} games`}</div>
+        <div><span className="winrate">{`${(data[0]*100).toFixed(2)}%`}</span> winrate</div>
+        <div>in {`${data[1]} games`}</div>
       </div>
 
     )

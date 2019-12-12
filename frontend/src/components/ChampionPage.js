@@ -163,7 +163,7 @@ class ChampionPage extends Component {
         <h2>{ name }</h2>
         <div className="champion-stats">
           <div>Wins: <span className="win">{`${wins}`}</span> | Losses: <span className="loss">{`${losses}`}</span></div>
-          <div>{` Win Rate: ${(wins/(wins+losses)*100).toFixed(2)}%`}</div>
+          <div>Win Rate: <span className="winrate">{`${(wins/(wins+losses)*100).toFixed(2)}%`}</span></div>
           <div>{`Pick Rate: ${(pickRate*100).toFixed(2)}%`}</div>
         </div>
         <ChampionChart 
