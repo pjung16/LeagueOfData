@@ -223,7 +223,6 @@ def getBestTeamComp():
         'teams': bestTeams,
         'wins': response[1],
         'losses': response[2],
-        'percentage': response[3]
     }
     return bestTeams_dict
 
