@@ -11,7 +11,7 @@ h2 {
   font-weight: bold !important;
 }
 
-.col-2:hover {
+.champion-select:hover {
   filter: brightness(125%);
 }
 
@@ -69,6 +69,28 @@ h2 {
 }
 
 .champion-stats {
+  margin-bottom: 25px;
+}
+
+.best-team > div:first-child {
+  border-left: 1px solid #dbc88a;
+}
+
+.best-team > div:last-child {
+  border-right: 1px solid #dbc88a;
+}
+
+.best-teams-header {
+  border-left: 1px solid #dbc88a;
+  border-bottom-color: #dbc88a;
+  border-right: 1px solid #dbc88a;
+  border-top-color: #dbc88a;
+  width: 260px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.best-teams-stats {
   margin-bottom: 25px;
 }
 
