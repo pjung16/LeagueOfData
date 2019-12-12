@@ -11,7 +11,7 @@ h2 {
   font-weight: bold !important;
 }
 
-.col-2:hover {
+.champion-select:hover {
   filter: brightness(125%);
 }
 

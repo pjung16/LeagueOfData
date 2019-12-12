@@ -17,11 +17,12 @@ class TeamRow extends Component {
       const champions = [];
       let champInfo;
       for(let i = 0; i < this.props.team.length; i++) {
-        champInfo = await axios.get(`${this.apiUrl}/championData`, {
+        champInfo = await axios.get(`${this.apiUrl}/champion`, {
           params: {
             champId: this.props.team[i]
           }
         });
+        console.log(champInfo)
         champions.push(champInfo.data);
       }
       console.log(champions)
@@ -36,14 +37,14 @@ class TeamRow extends Component {
     return (
       <div className="container">
         <div className="row justify-content-center">
-          {champions.map((champion) => {
-            const { name, hyperLink, imageLink, key } = champion;
+          {champions.map((champion, i) => {
+            const { name, hyperlink, imageLink, key } = champion;
             return(
-              <div className="col-md-2">
+              <div className="champion-select col-md-2">
                 <ChampionIcon
                   key={key}
                   championName={name}
-                  hyperLink={hyperLink}
+                  hyperLink={hyperlink}
                   imageLink={imageLink}
                 >
                 </ChampionIcon>
