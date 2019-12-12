@@ -12,7 +12,7 @@ h2 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 20px;
   text-align: left;
 }
 
@@ -49,13 +49,17 @@ p {
 }
 
 .about-header {
+  border-color: #7b97cc;
   border-left: 1px solid #7b97cc;
-  border-bottom-color: #7b97cc;
   border-right: 1px solid #7b97cc;
-  border-top-color: #7b97cc;
   width: 260px;
   margin: 0 auto;
-  margin-bottom: 25px;
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.about-link {
+  color: #7b97cc !important;
 }
 
 .champion-select {
