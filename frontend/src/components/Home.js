@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ChampionTable from './ChampionTable'
-import Header from './Header'
 import 'bootstrap/dist/css/bootstrap.css';
 import SearchFilter from './SearchFilter';
 

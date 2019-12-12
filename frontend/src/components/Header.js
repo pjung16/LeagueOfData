@@ -7,21 +7,21 @@ class Header extends Component {
   render() {
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg header-container">
-          <a className="" href="#">
+        <nav className="navbar navbar-expand-lg header-container" style={{marginBottom: '50px'}}>
+          <Link to="/">
             <img className="logo" src="logo.png" alt="D" />
             <span className="heading">League of Data</span>
-          </a>
+          </Link>
           <div class="collapse navbar-collapse" id="header-navbar">
             <ul class="navbar-nav">
               <li class="header-item">
-                <a class="nav-link" href="#">Best Pairs</a>
+                <Link class="nav-link" to="/">Best Pairs</Link>
               </li>
               <li class="header-item">
-                <a class="nav-link" href="#">Best Teams</a>
+                <Link class="nav-link" to="/bestTeams">Best Teams</Link>
               </li>
               <li class="header-item">
-                <a class="nav-link" href="#">About Us</a>
+                <Link class="nav-link" to="/aboutUs">About Us</Link>
               </li>
             </ul>
           </div>
