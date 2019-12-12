@@ -220,10 +220,10 @@ def getBestTeamComp():
     for t in teams:
         bestTeams.append(literal_eval(t[0]))
     bestTeams_dict = {
-        teams: bestTeams,
-        wins: response[1],
-        losses: response[2],
-        percentage: response[3]
+        'teams': bestTeams,
+        'wins': response[1],
+        'losses': response[2],
+        'percentage': response[3]
     }
     return bestTeams_dict
 
