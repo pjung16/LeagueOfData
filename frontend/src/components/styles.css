@@ -63,6 +63,20 @@ h2 {
   margin-bottom: 25px;
 }
 
+.best-teams-header {
+  border-left: 1px solid #dbc88a;
+  border-bottom-color: #dbc88a;
+  border-right: 1px solid #dbc88a;
+  border-top-color: #dbc88a;
+  width: 260px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.best-teams-stats {
+  margin-bottom: 25px;
+}
+
 .champion-info {
   margin-bottom: 28px;
   color: white;

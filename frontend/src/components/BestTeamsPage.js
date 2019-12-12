@@ -35,8 +35,14 @@ class BestTeamsPage extends Component {
     return (
       <div className="container" style={{maxWidth: '950px', color: '#ffffff'}}>
         <Header />
-        <h1>Best Teams</h1>
-        <h3>{`${teams.length} teams have a win rate of ${(wins/(wins+losses)*100).toFixed(2)}% with ${wins} wins and ${losses} losses`}</h3>
+        <div className="best-teams-header">
+          <h1>Best Teams</h1>
+          <h4 className="best-teams-stats">
+            <div>Teams: {teams.length}</div>
+            <div>Wins: <span className="win">{`${wins}`}</span> | Losses: <span className="loss">{`${losses}`}</span></div>
+            <div>Win Rate: <span className="winrate">{`${(wins/(wins+losses)*100).toFixed(2)}%`}</span></div>
+          </h4>
+        </div>
         {teams.map((team) => {
           return (
             <TeamRow key={team} team={team} />
