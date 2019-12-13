@@ -11,7 +11,7 @@ class ChampionInfo extends Component {
     this.state = {
       champion: []
     };
-    this.apiUrl = 'https://3.95.169.184:5000';
+    this.apiUrl = 'https://leagueofdata1.herokuapp.com';
 
     this.onClick = this.onClick.bind(this);
   }
