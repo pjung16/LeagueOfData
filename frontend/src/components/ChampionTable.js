@@ -9,7 +9,7 @@ class ChampionTable extends Component {
     this.state = {
       champions: []
     };
-    this.apiUrl = 'http://leagueofdata1.herokuapp.com';
+    this.apiUrl = 'https://leagueofdata1.herokuapp.com';
   }
 
   async componentDidMount() {
