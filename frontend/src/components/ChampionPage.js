@@ -17,7 +17,7 @@ class ChampionPage extends Component {
       losses: [],
       champInfo: {},
     };
-    this.apiUrl = 'https://3.95.169.184:5000';
+    this.apiUrl = 'http://leagueofdata1.herokuapp.com';
 
     this.getChampions = this.getChampions.bind(this);
     this.getWins = this.getWins.bind(this);

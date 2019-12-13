@@ -8,7 +8,7 @@ class PairTable extends Component {
     this.state = {
       pairs: []
     };
-    this.apiUrl = 'https://3.95.169.184:5000';
+    this.apiUrl = 'http://leagueofdata1.herokuapp.com';
   }
 
   render() {

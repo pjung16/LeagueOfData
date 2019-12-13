@@ -9,7 +9,7 @@ class TeamRow extends Component {
     this.state = {
       champions: []
     };
-    this.apiUrl = 'https://3.95.169.184:5000';
+    this.apiUrl = 'http://leagueofdata1.herokuapp.com';
   }
 
   async componentDidMount() {

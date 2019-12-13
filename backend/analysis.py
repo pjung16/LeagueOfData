@@ -3,6 +3,7 @@ import json
 import itertools
 import sys
 from ast import literal_eval
+import os
 
 champions_dict = {}
 with open('championData.json') as json_file:
@@ -150,15 +151,15 @@ def HARD_RESET(championIdsSorted):
     print('Hard reset successful.')
 
 def getBestPairs(champId):
-    DB_INFO = ''
-    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
-        DB_INFO = [line.rstrip('\n') for line in key]
+    # DB_INFO = ''
+    # with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+    #     DB_INFO = [line.rstrip('\n') for line in key]
 
-    connection = pymysql.connect(host=DB_INFO[0],
-                             port=int(DB_INFO[1]),
-                             user=DB_INFO[2],
-                             password=DB_INFO[3],
-                             db=DB_INFO[4],
+    connection = pymysql.connect(host=os.environ.get('DB_LINK'),
+                             port=int(os.environ.get('DB_PORT')),
+                             user=os.environ.get('DB_USER'),
+                             password=os.environ.get('DB_PW'),
+                             db=os.environ.get('DB_TABLE'),
                              charset='utf8mb4')
 
     championIds = getChampionIdDict()
@@ -174,16 +175,17 @@ def getBestPairs(champId):
     return bestPairs
 
 def getChampionData(champId):
-    DB_INFO = ''
-    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
-        DB_INFO = [line.rstrip('\n') for line in key]
+    # DB_INFO = ''
+    # with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+    #     DB_INFO = [line.rstrip('\n') for line in key]
 
-    connection = pymysql.connect(host=DB_INFO[0],
-                             port=int(DB_INFO[1]),
-                             user=DB_INFO[2],
-                             password=DB_INFO[3],
-                             db=DB_INFO[4],
+    connection = pymysql.connect(host=os.environ.get('DB_LINK'),
+                             port=int(os.environ.get('DB_PORT')),
+                             user=os.environ.get('DB_USER'),
+                             password=os.environ.get('DB_PW'),
+                             db=os.environ.get('DB_TABLE'),
                              charset='utf8mb4')
+
     cursor = connection.cursor()
     columns = [f'{champId}w', f'{champId}l']
     query = 'SELECT ' + columns[0] + ', ' + columns[1] + ' FROM ChampionData WHERE championId = %s'
@@ -197,15 +199,17 @@ def getChampionData(champId):
     return [stats, pickRate]
 
 def getBestTeamComp():
-    DB_INFO = ''
-    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
-        DB_INFO = [line.rstrip('\n') for line in key]
-    connection = pymysql.connect(host=DB_INFO[0],
-                             port=int(DB_INFO[1]),
-                             user=DB_INFO[2],
-                             password=DB_INFO[3],
-                             db=DB_INFO[4],
+    # DB_INFO = ''
+    # with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+    #     DB_INFO = [line.rstrip('\n') for line in key]
+
+    connection = pymysql.connect(host=os.environ.get('DB_LINK'),
+                             port=int(os.environ.get('DB_PORT')),
+                             user=os.environ.get('DB_USER'),
+                             password=os.environ.get('DB_PW'),
+                             db=os.environ.get('DB_TABLE'),
                              charset='utf8mb4')
+
     cursor = connection.cursor()
     query = '''SELECT team, wins, losses, ROUND(( wins/(wins+losses) * 100 ),2) AS percentage 
                FROM FiveChampTeamData 
@@ -227,15 +231,15 @@ def getBestTeamComp():
     return bestTeams_dict
 
 if __name__ == '__main__':
-    DB_INFO = ''
-    with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
-        DB_INFO = [line.rstrip('\n') for line in key]
+    # DB_INFO = ''
+    # with open('./DATA_CONSTRUCTION/DB_INFO.txt', 'r') as key:
+    #     DB_INFO = [line.rstrip('\n') for line in key]
 
-    connection = pymysql.connect(host=DB_INFO[0],
-                             port=int(DB_INFO[1]),
-                             user=DB_INFO[2],
-                             password=DB_INFO[3],
-                             db=DB_INFO[4],
+    connection = pymysql.connect(host=os.environ.get('DB_LINK'),
+                             port=int(os.environ.get('DB_PORT')),
+                             user=os.environ.get('DB_USER'),
+                             password=os.environ.get('DB_PW'),
+                             db=os.environ.get('DB_TABLE'),
                              charset='utf8mb4')
 
     championIds = getChampionIdDict()

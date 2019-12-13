@@ -10,7 +10,7 @@ class BestTeamsPage extends Component {
     this.state = {
       teams: [],
     };
-    this.apiUrl = 'https://3.95.169.184:5000';
+    this.apiUrl = 'http://leagueofdata1.herokuapp.com';
   }
 
   async componentDidMount() {
