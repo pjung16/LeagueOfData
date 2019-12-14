@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 
@@ -7,25 +8,24 @@ class Header extends Component {
   render() {
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg header-container" style={{marginBottom: '50px'}}>
-          <Link to="/">
+        <Navbar expand="lg" className="header-container navbar-dark">
+          <Nav.Link to="/">
             <img className="logo" src="logo.png" alt="D" />
-            <span className="heading">League of Data</span>
-          </Link>
-          <div class="collapse navbar-collapse" id="header-navbar">
-            <ul class="navbar-nav">
-              <li class="header-item">
-                <Link class="nav-link" to="/">Best Pairs</Link>
-              </li>
-              <li class="header-item">
-                <Link class="nav-link" to="/bestTeams">Best Teams</Link>
-              </li>
-              <li class="header-item">
-                <Link class="nav-link" to="/about">About</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+            <span className="heading mr-auto">League of Data</span>
+          </Nav.Link>
+          <Navbar.Toggle aria-controls="header-navbar" />
+          <Navbar.Collapse id="header-navbar">
+            <Nav.Link>
+              <Link className="header-item mr-auto" to="/">Best Pairs</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="header-item mr-auto" to="/bestTeams">Best Teams</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link className="header-item mr-auto" to="/about">About</Link>
+            </Nav.Link>
+          </Navbar.Collapse>
+        </Navbar>
       </Fragment>
     )
   }
