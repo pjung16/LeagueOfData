@@ -20,9 +20,9 @@ class ChampionIcon extends Component {
       <div style={{marginBottom: '15px', marginTop: '15px'}}>
         <Link to={ hyperLink }>
           <div className="champion-icon">
-              <img alt={ championName } src={ imageLink } />
+              <img className="img" alt={ championName } src={ imageLink } />
           </div>
-          <div className="champion-name">
+          <div className="champion-name overflow">
             <a href={ hyperLink }>
               { championName }
             </a>
