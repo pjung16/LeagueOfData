@@ -9,9 +9,11 @@ class Header extends Component {
     return (
       <Fragment>
         <Navbar expand="lg" className="header-container navbar-dark">
-          <Nav.Link to="/">
-            <img className="logo" src="logo.png" alt="D" />
-            <span className="heading mr-auto">League of Data</span>
+          <Nav.Link>
+            <Link to="/">
+              <img className="logo" src="logo.png" alt="D" />
+              <span className="heading mr-auto">League of Data</span>
+            </Link>
           </Nav.Link>
           <Navbar.Toggle aria-controls="header-navbar" />
           <Navbar.Collapse id="header-navbar">
