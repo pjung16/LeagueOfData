@@ -28,13 +28,13 @@ class ChampionTable extends Component {
     if (this.props.filterText !== '') {
       return (
         <div className="container">
-          <div className="row justify-content-start">
+          <div className="row justify-content-center">
             {champions.filter(champion => {
               return champion.name.toLowerCase().includes(this.props.filterText.toLowerCase())
             }).map((champion) => {
               const { name, hyperLink, imageLink, key } = champion;
               return(
-                <div className="champion-select col-2">
+                <div className="champion-select">
                   <ChampionIcon
                     key={key}
                     championName={name}
@@ -51,11 +51,11 @@ class ChampionTable extends Component {
     } else {
       return (
         <div className="container">
-          <div className="row justify-content-start">
+          <div className="row justify-content-center">
             {champions.map((champion) => {
               const { name, hyperLink, imageLink, key } = champion;
               return(
-                <div className="champion-select col-2">
+                <div className="champion-select">
                   <ChampionIcon
                     key={key}
                     championName={name}

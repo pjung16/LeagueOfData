@@ -19,8 +19,8 @@ class ChampionIcon extends Component {
     return (
       <div style={{marginBottom: '15px', marginTop: '15px'}}>
         <Link to={ hyperLink }>
-          <div className="champion-icon">
-              <img className="img" alt={ championName } src={ imageLink } />
+          <div className="champion-icon pl-3 pr-3">
+              <img alt={ championName } src={ imageLink } />
           </div>
           <div className="champion-name overflow">
             <a href={ hyperLink }>

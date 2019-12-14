@@ -40,7 +40,7 @@ class TeamRow extends Component {
           {champions.map((champion, i) => {
             const { name, hyperlink, imageLink, key } = champion;
             return(
-              <div className="champion-select col-md-2">
+              <div className="champion-select">
                 <ChampionIcon
                   key={key}
                   championName={name}

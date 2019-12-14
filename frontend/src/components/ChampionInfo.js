@@ -42,9 +42,9 @@ class ChampionInfo extends Component {
     const { data } = this.props;
     const { name, hyperLink, imageLink } = this.state.champion;
     return (
-      <div className="champion-info col-3" onClick={this.onClick}>
+      <div className="champion-info" onClick={this.onClick}>
         <div className="champion-icon">
-          <a href={ hyperLink }>
+          <a className="champion-icon pl-3 pr-3" href={ hyperLink }>
             <img alt={ name } src={ imageLink } />
           </a>
         </div>
