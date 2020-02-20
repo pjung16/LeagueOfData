@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/LeagueOfData/static/css/main.706c6407.chunk.css",
-    "main.js": "/LeagueOfData/static/js/main.37abd3df.chunk.js",
-    "main.js.map": "/LeagueOfData/static/js/main.37abd3df.chunk.js.map",
+    "main.css": "/LeagueOfData/static/css/main.f2564b6a.chunk.css",
+    "main.js": "/LeagueOfData/static/js/main.29b17e36.chunk.js",
+    "main.js.map": "/LeagueOfData/static/js/main.29b17e36.chunk.js.map",
     "runtime-main.js": "/LeagueOfData/static/js/runtime-main.22cc598c.js",
     "runtime-main.js.map": "/LeagueOfData/static/js/runtime-main.22cc598c.js.map",
-    "static/css/2.8291a1e4.chunk.css": "/LeagueOfData/static/css/2.8291a1e4.chunk.css",
-    "static/js/2.aba850ec.chunk.js": "/LeagueOfData/static/js/2.aba850ec.chunk.js",
-    "static/js/2.aba850ec.chunk.js.map": "/LeagueOfData/static/js/2.aba850ec.chunk.js.map",
+    "static/css/2.0f738506.chunk.css": "/LeagueOfData/static/css/2.0f738506.chunk.css",
+    "static/js/2.51501db1.chunk.js": "/LeagueOfData/static/js/2.51501db1.chunk.js",
+    "static/js/2.51501db1.chunk.js.map": "/LeagueOfData/static/js/2.51501db1.chunk.js.map",
     "index.html": "/LeagueOfData/index.html",
-    "precache-manifest.84c5044bb6c7bd06a1ebbb98fee09418.js": "/LeagueOfData/precache-manifest.84c5044bb6c7bd06a1ebbb98fee09418.js",
+    "precache-manifest.905666f3a36d8d0cce9a96a24c76fa19.js": "/LeagueOfData/precache-manifest.905666f3a36d8d0cce9a96a24c76fa19.js",
     "service-worker.js": "/LeagueOfData/service-worker.js",
-    "static/css/2.8291a1e4.chunk.css.map": "/LeagueOfData/static/css/2.8291a1e4.chunk.css.map",
-    "static/css/main.706c6407.chunk.css.map": "/LeagueOfData/static/css/main.706c6407.chunk.css.map",
-    "static/js/2.aba850ec.chunk.js.LICENSE": "/LeagueOfData/static/js/2.aba850ec.chunk.js.LICENSE",
+    "static/css/2.0f738506.chunk.css.map": "/LeagueOfData/static/css/2.0f738506.chunk.css.map",
+    "static/css/main.f2564b6a.chunk.css.map": "/LeagueOfData/static/css/main.f2564b6a.chunk.css.map",
+    "static/js/2.51501db1.chunk.js.LICENSE": "/LeagueOfData/static/js/2.51501db1.chunk.js.LICENSE",
     "static/media/semantic.min.css": "/LeagueOfData/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.22cc598c.js",
-    "static/css/2.8291a1e4.chunk.css",
-    "static/js/2.aba850ec.chunk.js",
-    "static/css/main.706c6407.chunk.css",
-    "static/js/main.37abd3df.chunk.js"
+    "static/css/2.0f738506.chunk.css",
+    "static/js/2.51501db1.chunk.js",
+    "static/css/main.f2564b6a.chunk.css",
+    "static/js/main.29b17e36.chunk.js"
   ]
 }
