@@ -78,6 +78,11 @@ p {
   margin: 10px;
 }
 
+.loading {
+  color: white;
+  font-size: 40px;
+}
+
 .about-header {
   border-color: #7b97cc;
   border-left: 1px solid #7b97cc;

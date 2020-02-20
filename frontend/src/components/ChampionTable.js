@@ -7,7 +7,8 @@ class ChampionTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      champions: []
+      champions: [],
+      isLoading: true,
     };
     this.apiUrl = 'https://leagueofdata1.herokuapp.com';
   }
@@ -15,60 +16,70 @@ class ChampionTable extends Component {
   async componentDidMount() {
     try {
       const response = await axios.get(`${this.apiUrl}/champions`);
-      console.log(response.data)
-      this.setState({ champions: response.data });
+      // console.log(response.data)
+
+      this.setState({ 
+        champions: response.data, 
+        isLoading: false 
+      });
     } catch (e) {
       console.log(e);
     }
   }
 
   render() {
-    const { champions } = this.state;
+    const { champions, isLoading } = this.state;
 
-    if (this.props.filterText !== '') {
-      return (
-        <div className="container">
-          <div className="row justify-content-center">
-            {champions.filter(champion => {
-              return champion.name.toLowerCase().includes(this.props.filterText.toLowerCase())
-            }).map((champion) => {
-              const { name, hyperLink, imageLink, key } = champion;
-              return(
-                <div className="champion-select">
-                  <ChampionIcon
-                    key={key}
-                    championName={name}
-                    hyperLink={hyperLink}
-                    imageLink={imageLink}
-                  >
-                  </ChampionIcon>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )
+    if (isLoading) {
+      return <div className="loading">Loading...</div>
     } else {
-      return (
-        <div className="container">
-          <div className="row justify-content-center">
-            {champions.map((champion) => {
-              const { name, hyperLink, imageLink, key } = champion;
-              return(
-                <div className="champion-select">
-                  <ChampionIcon
-                    key={key}
-                    championName={name}
-                    hyperLink={hyperLink}
-                    imageLink={imageLink}
-                  >
-                  </ChampionIcon>
-                </div>
-              );
-            })}
+      if (this.props.filterText !== '') {
+        return (
+          <div className="container">
+            <div className="row justify-content-center">
+              {
+                champions.filter(champion => {
+                  return champion.name.toLowerCase().includes(this.props.filterText.toLowerCase())
+                }).map((champion) => {
+                  const { name, hyperLink, imageLink, key } = champion;
+                  return(
+                    <div className="champion-select">
+                      <ChampionIcon
+                        key={key}
+                        championName={name}
+                        hyperLink={hyperLink}
+                        imageLink={imageLink}
+                      >
+                      </ChampionIcon>
+                    </div>
+                  );
+                })
+              }
+            </div>
           </div>
-        </div>
-      )
+        )
+      } else {
+        return (
+          <div className="container">
+            <div className="row justify-content-center">
+              {champions.map((champion) => {
+                const { name, hyperLink, imageLink, key } = champion;
+                return(
+                  <div className="champion-select">
+                    <ChampionIcon
+                      key={key}
+                      championName={name}
+                      hyperLink={hyperLink}
+                      imageLink={imageLink}
+                    >
+                    </ChampionIcon>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )
+      }
     }
   }
 }
