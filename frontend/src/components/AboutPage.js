@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class BestTeamsPage extends Component {
+class AboutPage extends Component {
   
   render() {
     return (
@@ -26,4 +26,4 @@ class BestTeamsPage extends Component {
   }
 }
 
-export default BestTeamsPage;
+export default AboutPage;
